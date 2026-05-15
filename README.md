@@ -1,6 +1,6 @@
 # Pathogen of the Week
 
-A weekly briefing on the most relevant infectious-disease threats, tuned for policymakers and decision-makers.
+A weekly briefing on the most relevant infectious disease threats, tuned for policymakers and decision-makers.
 
 **Live dashboard:** https://ivetyorda.github.io/pathogen-of-the-week/
 **1-page PDF:** https://ivetyorda.github.io/pathogen-of-the-week/pathogen-of-the-week.pdf
