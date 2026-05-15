@@ -1,0 +1,14 @@
+# Print preview produced as a side-effect of generate_pdf.py
+pathogen-of-the-week.print.html
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+*.swp

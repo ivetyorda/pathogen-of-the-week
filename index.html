@@ -1,0 +1,692 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pathogen of the Week — ISO Week 20, 2026 (Mon 11 – Sun 17 May)</title>
+<meta name="description" content="A weekly briefing for policymakers on the most relevant infectious-disease threats, drawing on WHO, ECDC, CDC and open-source signals." />
+<style>
+  :root {
+    --bg: #0b1020;
+    --bg-elev: #131a32;
+    --bg-soft: #1a2244;
+    --line: #263158;
+    --text: #e8ecf7;
+    --muted: #9aa3c2;
+    --accent: #6ee7ff;
+    --accent-2: #a78bfa;
+    --crit: #f87171;
+    --warn: #fbbf24;
+    --ok: #34d399;
+    --acute-bg: rgba(248,113,113,0.12);
+    --acute-bd: rgba(248,113,113,0.45);
+    --smolder-bg: rgba(251,191,36,0.12);
+    --smolder-bd: rgba(251,191,36,0.45);
+    --watch-bg: rgba(110,231,255,0.10);
+    --watch-bd: rgba(110,231,255,0.40);
+    --shadow: 0 12px 40px rgba(0,0,0,0.45);
+    --radius: 14px;
+  }
+  @media (prefers-color-scheme: light) {
+    /* keep dark theme regardless; this dashboard is briefing-room style */
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background:
+      radial-gradient(1200px 600px at 80% -10%, rgba(167,139,250,0.18), transparent 60%),
+      radial-gradient(900px 500px at -10% 20%, rgba(110,231,255,0.10), transparent 60%),
+      var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .wrap { max-width: 1280px; margin: 0 auto; padding: 28px 24px 80px; }
+
+  /* Header */
+  header.top {
+    display: flex; align-items: flex-start; justify-content: space-between;
+    gap: 24px; flex-wrap: wrap; margin-bottom: 28px;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 14px;
+  }
+  .brand-mark {
+    width: 44px; height: 44px; border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: grid; place-items: center;
+    box-shadow: var(--shadow);
+  }
+  .brand-mark svg { width: 26px; height: 26px; }
+  h1 {
+    font-size: 26px; margin: 0; letter-spacing: -0.01em;
+  }
+  .sub {
+    color: var(--muted); font-size: 14px; margin-top: 2px;
+  }
+  .meta {
+    display: flex; gap: 8px; align-items: center; flex-wrap: wrap;
+    font-size: 13px; color: var(--muted);
+  }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 10px; border-radius: 999px;
+    background: var(--bg-elev); border: 1px solid var(--line);
+    color: var(--text); font-size: 12px;
+  }
+  .chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); }
+  .chip.live .dot { background: var(--crit); box-shadow: 0 0 0 4px rgba(248,113,113,0.15); animation: pulse 2s infinite; }
+  @keyframes pulse {
+    0%,100% { box-shadow: 0 0 0 4px rgba(248,113,113,0.15); }
+    50% { box-shadow: 0 0 0 8px rgba(248,113,113,0.05); }
+  }
+
+  /* Hero summary */
+  .hero {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)) , var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    margin-bottom: 24px;
+    box-shadow: var(--shadow);
+  }
+  .hero h2 { margin: 0 0 8px; font-size: 18px; }
+  .hero p { margin: 0; color: var(--muted); font-size: 14.5px; }
+  .hero .takeaway { color: var(--text); margin-top: 10px; font-size: 15px; }
+  .hero .takeaway b { color: var(--accent); }
+
+  /* Filter bar */
+  .filterbar {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px;
+    align-items: center;
+  }
+  .filterbar .label { color: var(--muted); font-size: 13px; margin-right: 4px; }
+  .filterbar button {
+    background: var(--bg-elev); color: var(--text);
+    border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px;
+    font-size: 13px; cursor: pointer; transition: 0.15s ease;
+  }
+  .filterbar button:hover { border-color: var(--accent); }
+  .filterbar button.active {
+    background: linear-gradient(135deg, rgba(110,231,255,0.16), rgba(167,139,250,0.16));
+    border-color: var(--accent);
+    color: var(--text);
+  }
+
+  /* Cards grid */
+  .grid {
+    display: grid; gap: 18px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  @media (max-width: 1024px) { .grid { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    box-shadow: var(--shadow);
+    transition: transform 0.15s ease, border-color 0.15s ease, opacity 0.2s;
+  }
+  .card.dim { opacity: 0.35; }
+  .card .head {
+    padding: 18px 20px 14px; border-bottom: 1px solid var(--line);
+  }
+  .card .tag {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em;
+    padding: 4px 9px; border-radius: 999px;
+    margin-bottom: 10px;
+  }
+  .tag.acute    { background: var(--acute-bg);    border: 1px solid var(--acute-bd);    color: #fecaca; }
+  .tag.smolder  { background: var(--smolder-bg);  border: 1px solid var(--smolder-bd);  color: #fde68a; }
+  .tag.watch    { background: var(--watch-bg);    border: 1px solid var(--watch-bd);    color: #bef0ff; }
+  .card h3 { margin: 0; font-size: 19px; letter-spacing: -0.01em; }
+  .card .latin { color: var(--muted); font-style: italic; font-size: 13px; margin-top: 2px; }
+  .card .where { color: var(--muted); font-size: 13px; margin-top: 6px; }
+
+  .stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid var(--line);
+  }
+  .stat {
+    padding: 14px 16px; border-right: 1px solid var(--line);
+  }
+  .stat:last-child { border-right: none; }
+  .stat .num { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; }
+  .stat .lbl { font-size: 11px; color: var(--muted); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.06em; }
+  .stat .num.crit { color: var(--crit); }
+  .stat .num.warn { color: var(--warn); }
+  .stat .num.ok   { color: var(--ok); }
+
+  /* Scores */
+  .scores { padding: 16px 20px; border-bottom: 1px solid var(--line); }
+  .scores .row {
+    display: grid; grid-template-columns: 110px 1fr 32px; gap: 10px;
+    align-items: center; margin-bottom: 8px;
+  }
+  .scores .row:last-child { margin-bottom: 0; }
+  .scores .lbl { font-size: 12.5px; color: var(--muted); }
+  .scores .val { font-size: 12.5px; color: var(--text); text-align: right; font-variant-numeric: tabular-nums; }
+  .bar {
+    height: 8px; background: var(--bg-soft); border-radius: 999px; overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .bar > span {
+    display: block; height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    border-radius: inherit;
+    transition: width 0.6s ease;
+  }
+  .bar.crit > span { background: linear-gradient(90deg, #fb7185, #f87171); }
+  .bar.warn > span { background: linear-gradient(90deg, #f59e0b, #fbbf24); }
+  .bar.ok   > span { background: linear-gradient(90deg, #10b981, #34d399); }
+
+  /* What it means */
+  .body { padding: 16px 20px; flex: 1; }
+  .body h4 {
+    font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;
+    margin: 0 0 8px;
+  }
+  .body p { margin: 0 0 10px; font-size: 14px; }
+  .body ul { margin: 4px 0 14px; padding-left: 18px; }
+  .body li { margin-bottom: 4px; font-size: 13.5px; }
+  .body li::marker { color: var(--accent); }
+
+  .toggle {
+    margin-top: 6px;
+    background: transparent; border: 1px solid var(--line);
+    color: var(--text); padding: 8px 12px; border-radius: 8px;
+    font-size: 12.5px; cursor: pointer;
+    width: 100%;
+  }
+  .toggle:hover { border-color: var(--accent); }
+  .details { display: none; padding-top: 12px; }
+  .details.open { display: block; }
+  .details p { font-size: 13.5px; }
+  .details .kv { display: grid; grid-template-columns: 130px 1fr; gap: 4px 12px; font-size: 13px; margin: 8px 0; }
+  .details .kv .k { color: var(--muted); }
+  .details .src { font-size: 12px; color: var(--muted); margin-top: 6px; }
+  .details .src a { display: inline-block; margin-right: 10px; }
+
+  /* Comparison section */
+  .compare {
+    margin-top: 28px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    box-shadow: var(--shadow);
+  }
+  .compare h2 { margin: 0 0 4px; font-size: 18px; }
+  .compare p.sub { margin: 0 0 18px; color: var(--muted); font-size: 13.5px; }
+  .compare-grid {
+    display: grid; grid-template-columns: minmax(280px, 360px) 1fr; gap: 24px;
+    align-items: start;
+  }
+  @media (max-width: 900px) { .compare-grid { grid-template-columns: 1fr; } }
+  table.signals {
+    width: 100%; border-collapse: collapse; font-size: 13.5px;
+  }
+  table.signals th, table.signals td {
+    text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line);
+  }
+  table.signals th {
+    color: var(--muted); font-weight: 500; font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  table.signals tr:last-child td { border-bottom: none; }
+  table.signals td.num { font-variant-numeric: tabular-nums; text-align: right; }
+  table.signals .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 8px; vertical-align: middle; }
+
+  /* Radar */
+  .radar-wrap { display: grid; place-items: center; }
+  .legend {
+    display: flex; gap: 12px; flex-wrap: wrap; justify-content: center;
+    margin-top: 8px; font-size: 12.5px; color: var(--muted);
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .legend i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+
+  /* Methodology */
+  .method {
+    margin-top: 28px;
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 22px 24px;
+    box-shadow: var(--shadow);
+  }
+  .method h2 { font-size: 16px; margin: 0 0 8px; }
+  .method p, .method li { color: var(--muted); font-size: 13.5px; }
+  .method ul { margin: 6px 0 0 18px; padding: 0; }
+  .method li { margin-bottom: 4px; }
+
+  /* Footer */
+  footer {
+    margin-top: 28px; color: var(--muted); font-size: 12.5px; text-align: center;
+  }
+
+  /* Source list */
+  .sources-block { margin-top: 24px; }
+  .sources-block h2 { font-size: 16px; margin: 0 0 10px; }
+  .source-list {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 6px 24px;
+    font-size: 13px;
+  }
+  @media (max-width: 700px) { .source-list { grid-template-columns: 1fr; } }
+  .source-list a { color: var(--accent); }
+  .source-list .org { color: var(--muted); margin-right: 6px; }
+
+  /* Highlight ribbon */
+  .ribbon {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: linear-gradient(135deg, rgba(248,113,113,0.18), rgba(251,191,36,0.18));
+    border: 1px solid rgba(248,113,113,0.4);
+    color: #fecaca;
+    padding: 4px 10px; border-radius: 999px; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  /* Download PDF chip */
+  .chip.dl {
+    background: linear-gradient(135deg, rgba(110,231,255,0.16), rgba(167,139,250,0.16));
+    border-color: var(--accent);
+    color: var(--text);
+    cursor: pointer;
+    transition: 0.15s ease;
+  }
+  .chip.dl:hover {
+    background: linear-gradient(135deg, rgba(110,231,255,0.28), rgba(167,139,250,0.28));
+    text-decoration: none;
+    transform: translateY(-1px);
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#0b1020" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"></circle>
+          <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"></path>
+        </svg>
+      </div>
+      <div>
+        <h1>Pathogen of the Week</h1>
+        <div class="sub">A policymaker briefing on this week's most relevant infectious-disease threats</div>
+      </div>
+    </div>
+    <div class="meta">
+      <span class="chip live"><span class="dot"></span> ISO Week 20 · Mon 11 – Sun 17 May 2026</span>
+      <span class="chip">Sources: WHO · ECDC · CDC · open-source news</span>
+      <a class="chip dl" href="pathogen-of-the-week.pdf" download>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="margin-right:2px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download 1-page PDF
+      </a>
+    </div>
+  </header>
+
+  <section class="hero" role="region" aria-label="Top-line summary">
+    <h2>This week at a glance</h2>
+    <p>An acute novel-transmission event dominates the briefing for week 20. Two longer-running concerns continue to require attention; one global threat has receded.</p>
+    <p class="takeaway">
+      <b>Bottom line:</b> The <b>Andes hantavirus</b> cluster aboard the MV&nbsp;Hondius — 11 cases, 3 deaths, ~27% case-fatality, multi-country dispersal of contacts — is this week's leading signal because it is acute, novel in setting, and saturating both official channels and public attention. <b>Mpox clade&nbsp;Ib</b> remains a smoldering PHEIC with continued community transmission in five European countries. <b>H5N1</b> stays on the long-watch list given persistent US&nbsp;dairy-cattle spread and a fresh fatal pediatric case abroad. Global public-health risk from the hantavirus event is currently assessed as <b>low</b> by WHO; pandemic potential is judged <b>limited</b> by independent virologists.
+    </p>
+  </section>
+
+  <div class="filterbar" role="toolbar" aria-label="Focus a pathogen">
+    <span class="label">Focus:</span>
+    <button class="active" data-filter="all">All three</button>
+    <button data-filter="hanta">Andes hantavirus</button>
+    <button data-filter="mpox">Mpox (clade Ib)</button>
+    <button data-filter="h5n1">H5N1 / H5Nx</button>
+  </div>
+
+  <section class="grid" id="cards">
+
+    <!-- CARD 1: Andes Hantavirus -->
+    <article class="card" data-id="hanta">
+      <div class="head">
+        <span class="tag acute">● Acute event · Lead story</span>
+        <h3>Andes hantavirus <span class="ribbon" style="margin-left:6px">Lead</span></h3>
+        <div class="latin">Orthohantavirus andesense (ANDV) — MV Hondius cluster</div>
+        <div class="where">📍 Atlantic crossing · disembark Tenerife (Canary Islands) · contacts in 19 countries</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num crit">11</div><div class="lbl">Cases</div></div>
+        <div class="stat"><div class="num crit">3</div><div class="lbl">Deaths</div></div>
+        <div class="stat"><div class="num warn">~27%</div><div class="lbl">CFR</div></div>
+      </div>
+      <div class="scores">
+        <div class="row"><span class="lbl">Severity</span><div class="bar crit"><span style="width:85%"></span></div><span class="val">8.5</span></div>
+        <div class="row"><span class="lbl">Novelty</span><div class="bar"><span style="width:90%"></span></div><span class="val">9.0</span></div>
+        <div class="row"><span class="lbl">Public attention</span><div class="bar warn"><span style="width:95%"></span></div><span class="val">9.5</span></div>
+        <div class="row"><span class="lbl">Policy urgency</span><div class="bar crit"><span style="width:80%"></span></div><span class="val">8.0</span></div>
+        <div class="row"><span class="lbl">Pandemic potential</span><div class="bar ok"><span style="width:25%"></span></div><span class="val">2.5</span></div>
+      </div>
+      <div class="body">
+        <h4>Why it matters this week</h4>
+        <p>First known hantavirus outbreak on a cruise ship. Strong sequencing evidence of <b>limited human-to-human transmission</b> of Andes virus on board — the only hantavirus species with documented person-to-person spread. Passengers of 19 nationalities have now dispersed via military and government repatriation flights.</p>
+        <h4>For policymakers</h4>
+        <ul>
+          <li>Coordinate cross-border contact tracing for repatriated passengers (incubation window up to ~6 weeks).</li>
+          <li>Brief ports, cruise lines and travel-health authorities on rodent-exclusion and onboard isolation protocols.</li>
+          <li>Avoid over-reaction: WHO assesses global public-health risk as <b>low</b>; no sustained transmission outside the ship.</li>
+          <li>Confirm domestic clinical alert pathways — many physicians have never seen HPS.</li>
+        </ul>
+        <button class="toggle" aria-expanded="false">Show detail & sources ▾</button>
+        <div class="details">
+          <div class="kv">
+            <div class="k">First notified</div><div>2 May 2026 (WHO)</div>
+            <div class="k">Index location</div><div>MV Hondius, Atlantic Ocean</div>
+            <div class="k">Pathogen</div><div>Andes orthohantavirus (ANDV)</div>
+            <div class="k">Transmission</div><div>Rodent reservoir (long-tailed pygmy rice rat); rare H2H via close contact</div>
+            <div class="k">Incubation</div><div>~1–6 weeks (median ~14–17 days)</div>
+            <div class="k">Clinical</div><div>Fever, GI symptoms → ARDS / cardiopulmonary shock</div>
+            <div class="k">CFR (Andes)</div><div>~25–40% in past Latin-American outbreaks</div>
+            <div class="k">Treatment</div><div>Supportive (ICU, ECMO); no licensed antiviral or vaccine</div>
+            <div class="k">Risk to USA</div><div>"Extremely low" — CDC (no domestic transmission)</div>
+            <div class="k">EU response</div><div>ECDC published rapid risk assessment 14 May 2026</div>
+          </div>
+          <p class="src">
+            <a href="https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON601">WHO DON</a>
+            <a href="https://www.cdc.gov/han/php/notices/han00528.html">CDC HAN-528</a>
+            <a href="https://www.ecdc.europa.eu/en/infectious-disease-topics/hantavirus-infection/surveillance-and-updates/andes-hantavirus-outbreak">ECDC update</a>
+            <a href="https://www.who.int/news/item/07-05-2026-who-s-response-to-hantavirus-cases-linked-to-a-cruise-ship">WHO response</a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- CARD 2: Mpox clade Ib -->
+    <article class="card" data-id="mpox">
+      <div class="head">
+        <span class="tag smolder">● Smoldering · PHEIC</span>
+        <h3>Mpox (clade Ib)</h3>
+        <div class="latin">Monkeypox virus, clade Ib</div>
+        <div class="where">📍 DRC, Madagascar, Uganda, Burundi, Kenya · community transmission in 5 European countries</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num warn">907</div><div class="lbl">Confirmed (Africa, recent period)</div></div>
+        <div class="stat"><div class="num warn">7</div><div class="lbl">Deaths (recent period)</div></div>
+        <div class="stat"><div class="num">74</div><div class="lbl">Clade I cases · EU/EEA (Feb–Mar)</div></div>
+      </div>
+      <div class="scores">
+        <div class="row"><span class="lbl">Severity</span><div class="bar warn"><span style="width:55%"></span></div><span class="val">5.5</span></div>
+        <div class="row"><span class="lbl">Novelty</span><div class="bar"><span style="width:40%"></span></div><span class="val">4.0</span></div>
+        <div class="row"><span class="lbl">Public attention</span><div class="bar warn"><span style="width:50%"></span></div><span class="val">5.0</span></div>
+        <div class="row"><span class="lbl">Policy urgency</span><div class="bar warn"><span style="width:70%"></span></div><span class="val">7.0</span></div>
+        <div class="row"><span class="lbl">Pandemic potential</span><div class="bar warn"><span style="width:45%"></span></div><span class="val">4.5</span></div>
+      </div>
+      <div class="body">
+        <h4>Why it matters this week</h4>
+        <p>The overall African trend is declining since May 2025, but <b>sustained community transmission of clade Ib continues in Austria, Belgium, Portugal, Spain and the UK</b>, mostly in sexual networks of MSM. A WHO situation report (#65) and an ECDC weekly threats note both updated this month. A novel clade Ib/IIb recombinant has been flagged in WHO DON 2026-DON595 — worth monitoring.</p>
+        <h4>For policymakers</h4>
+        <ul>
+          <li>Sustain targeted JYNNEOS / MVA-BN vaccine availability for at-risk groups; supply tightening in some markets.</li>
+          <li>Maintain non-stigmatizing messaging through community organizations; avoid travel restrictions.</li>
+          <li>Fund continued genomic surveillance — clade I/II recombinants are emerging.</li>
+          <li>Review reimbursement codes for outpatient tecovirimat where stockpiles permit.</li>
+        </ul>
+        <button class="toggle" aria-expanded="false">Show detail & sources ▾</button>
+        <div class="details">
+          <div class="kv">
+            <div class="k">PHEIC status</div><div>Active (re-declared Aug 2024; still in force)</div>
+            <div class="k">Top African burden</div><div>Madagascar (357), DRC (216) — confirmed clade I, March 2026</div>
+            <div class="k">EU/EEA new (Feb–Mar)</div><div>74 clade I cases reported to TESSy</div>
+            <div class="k">Driver outside Africa</div><div>Sexual contact (99% adult, 97% male, 89% MSM)</div>
+            <div class="k">Vaccines</div><div>JYNNEOS / MVA-BN (Bavarian Nordic) — limited supply</div>
+            <div class="k">Antiviral</div><div>Tecovirimat — clinical efficacy mixed in trials</div>
+            <div class="k">Recombinant flag</div><div>Clade Ib/IIb recombinant (WHO DON 2026-DON595)</div>
+          </div>
+          <p class="src">
+            <a href="https://www.who.int/emergencies/situations/mpox-outbreak">WHO mpox hub</a>
+            <a href="https://www.ecdc.europa.eu/en/mpox-worldwide-overview">ECDC overview</a>
+            <a href="https://www.who.int/publications/m/item/multi-country-outbreak-of-mpox--external-situation-report--65---30-april-2026">Sit-rep #65</a>
+            <a href="https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON595">DON 2026-DON595 (recombinant)</a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+    <!-- CARD 3: H5N1 / H5Nx -->
+    <article class="card" data-id="h5n1">
+      <div class="head">
+        <span class="tag watch">● On the watch list</span>
+        <h3>H5N1 / H5Nx avian influenza</h3>
+        <div class="latin">Influenza A virus, H5 subtypes (incl. H5N1 2.3.4.4b, H5N5)</div>
+        <div class="where">📍 Cattle in 19 US states · sporadic human cases globally · 1st human H5N5 confirmed</div>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="num warn">57</div><div class="lbl">US human H5N1 cases (cumulative)</div></div>
+        <div class="stat"><div class="num">13</div><div class="lbl">Global zoonotic flu cases Q1 2026</div></div>
+        <div class="stat"><div class="num crit">1</div><div class="lbl">New fatal pediatric case (Bangladesh)</div></div>
+      </div>
+      <div class="scores">
+        <div class="row"><span class="lbl">Severity</span><div class="bar warn"><span style="width:60%"></span></div><span class="val">6.0</span></div>
+        <div class="row"><span class="lbl">Novelty</span><div class="bar warn"><span style="width:55%"></span></div><span class="val">5.5</span></div>
+        <div class="row"><span class="lbl">Public attention</span><div class="bar"><span style="width:40%"></span></div><span class="val">4.0</span></div>
+        <div class="row"><span class="lbl">Policy urgency</span><div class="bar warn"><span style="width:65%"></span></div><span class="val">6.5</span></div>
+        <div class="row"><span class="lbl">Pandemic potential</span><div class="bar crit"><span style="width:75%"></span></div><span class="val">7.5</span></div>
+      </div>
+      <div class="body">
+        <h4>Why it matters this week</h4>
+        <p>The headline number is quiet, but the substrate is not. <b>H5N1 continues to spread in US dairy cattle</b> across 19 states, with 57 cumulative human cases (mostly farm workers). May 2026 saw the <b>first confirmed human H5N5 infection</b> (NEJM) and one new fatal pediatric H5N1 case in Bangladesh. No sustained human-to-human transmission. Pandemic-preparedness risk remains the highest among the three pathogens here.</p>
+        <h4>For policymakers</h4>
+        <ul>
+          <li>Maintain PPE distribution and seroprevalence studies for dairy / poultry workers.</li>
+          <li>Accelerate H5 candidate vaccine procurement contracts (matched-strain stocks).</li>
+          <li>Mandate bulk-tank milk surveillance; FDA retail-milk monitoring remains the early-warning workhorse.</li>
+          <li>Pre-position diagnostics & antivirals; review cross-border alerts for human clusters.</li>
+        </ul>
+        <button class="toggle" aria-expanded="false">Show detail & sources ▾</button>
+        <div class="details">
+          <div class="kv">
+            <div class="k">US cattle states</div><div>19 (AZ, CA, CO, ID, IA, KS, MI, MN, NE, NV, NM, NC, OH, OK, SD, TX, UT, WI, WY)</div>
+            <div class="k">US human H5N1</div><div>57 cumulative confirmed (34 cattle-linked, 21 poultry-linked, 2 unknown)</div>
+            <div class="k">US H5N5 human</div><div>1 confirmed (75-y-o female; NEJM May 2026)</div>
+            <div class="k">Global Q1 2026</div><div>13 avian/swine flu cases tracked by WHO</div>
+            <div class="k">CDC risk</div><div>Low to general public; elevated for occupational exposure</div>
+            <div class="k">Vaccines</div><div>H5N8/H5N1 candidate stocks held by US BARDA, EU HERA</div>
+            <div class="k">Treatment</div><div>Oseltamivir / baloxavir; resistance not yet documented</div>
+          </div>
+          <p class="src">
+            <a href="https://www.cdc.gov/bird-flu/situation-summary/index.html">CDC bird-flu summary</a>
+            <a href="https://www.nejm.org/doi/full/10.1056/NEJMc2518178">NEJM: First human H5N5</a>
+            <a href="https://www.fda.gov/food/alerts-advisories-safety-information/investigation-avian-influenza-h5n1-virus-dairy-cattle">FDA retail-milk monitoring</a>
+            <a href="https://www.cidrap.umn.edu/avian-influenza-bird-flu/who-reports-h5n1-death-among-variant-zoonotic-flu-cases-seen-year">CIDRAP / WHO update</a>
+          </p>
+        </div>
+      </div>
+    </article>
+
+  </section>
+
+  <!-- Comparison section -->
+  <section class="compare" role="region" aria-label="Side-by-side comparison">
+    <h2>Side-by-side signal comparison</h2>
+    <p class="sub">Composite scoring across five dimensions. Hover any radar petal for exact values; click the legend to isolate one pathogen.</p>
+
+    <div class="compare-grid">
+      <div class="radar-wrap">
+        <svg id="radar" viewBox="-160 -160 320 320" width="100%" height="auto" style="max-width:360px" role="img" aria-label="Radar chart comparing pathogens"></svg>
+        <div class="legend">
+          <span><i style="background:#f87171"></i> Andes hantavirus</span>
+          <span><i style="background:#fbbf24"></i> Mpox clade Ib</span>
+          <span><i style="background:#6ee7ff"></i> H5N1 / H5Nx</span>
+        </div>
+      </div>
+
+      <table class="signals" aria-label="Numeric comparison table">
+        <thead>
+          <tr>
+            <th>Signal</th>
+            <th><span class="swatch" style="background:#f87171"></span>Hantavirus</th>
+            <th><span class="swatch" style="background:#fbbf24"></span>Mpox Ib</th>
+            <th><span class="swatch" style="background:#6ee7ff"></span>H5N1/H5Nx</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Severity (clinical)</td>            <td class="num">8.5</td><td class="num">5.5</td><td class="num">6.0</td></tr>
+          <tr><td>Novelty</td>                         <td class="num">9.0</td><td class="num">4.0</td><td class="num">5.5</td></tr>
+          <tr><td>Public attention</td>                <td class="num">9.5</td><td class="num">5.0</td><td class="num">4.0</td></tr>
+          <tr><td>Policy urgency</td>                  <td class="num">8.0</td><td class="num">7.0</td><td class="num">6.5</td></tr>
+          <tr><td>Pandemic potential</td>              <td class="num">2.5</td><td class="num">4.5</td><td class="num">7.5</td></tr>
+          <tr><td><b>Composite (mean)</b></td>         <td class="num"><b>7.5</b></td><td class="num"><b>5.2</b></td><td class="num"><b>5.9</b></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Methodology & sources -->
+  <section class="method">
+    <h2>Methodology</h2>
+    <p>The pathogen-of-the-week is selected by combining three signal classes:</p>
+    <ul>
+      <li><b>Official surveillance signal</b> — WHO Disease Outbreak News, ECDC Communicable Disease Threats Report, CDC Health Alert Network and outbreak listings, national health-agency advisories.</li>
+      <li><b>Severity signal</b> — case count, case-fatality ratio, geographic dispersion, transmissibility (R, secondary attack rate), clinical severity, treatment availability.</li>
+      <li><b>Attention signal</b> — volume and tier of news coverage (Google News / AP / Reuters / Nature / NEJM / national broadcasters), Wikipedia page-view trend, social-media mention volume where APIs allow.</li>
+    </ul>
+    <p style="margin-top:10px">Each pathogen is scored 0–10 on five dimensions (Severity, Novelty, Public&nbsp;attention, Policy&nbsp;urgency, Pandemic&nbsp;potential). The lead story has the highest composite when weighted toward acute novelty and attention; the watch-list slot privileges pandemic potential over current case count.</p>
+
+    <div class="sources-block">
+      <h2>Sources cited this week</h2>
+      <div class="source-list">
+        <div><span class="org">WHO</span><a href="https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON601">DON 2026-DON601 — Hantavirus cruise ship</a></div>
+        <div><span class="org">WHO</span><a href="https://www.who.int/news/item/07-05-2026-who-s-response-to-hantavirus-cases-linked-to-a-cruise-ship">WHO response statement (7 May 2026)</a></div>
+        <div><span class="org">CDC</span><a href="https://www.cdc.gov/han/php/notices/han00528.html">HAN-528 hantavirus advisory</a></div>
+        <div><span class="org">CDC</span><a href="https://www.cdc.gov/media/releases/2026/2026-cdc-provides-update-on-hantavirus-outbreak-linked-to-m-v-hondius-cruise-ship.html">CDC Hondius update</a></div>
+        <div><span class="org">ECDC</span><a href="https://www.ecdc.europa.eu/en/publications-data/communicable-disease-threats-report-9-13-may-2026-week-20">CDTR Week 20 (9–13 May 2026)</a></div>
+        <div><span class="org">ECDC</span><a href="https://www.ecdc.europa.eu/en/publications-data/communicable-disease-threats-report-2-8-may-2026-week-19">CDTR Week 19 (2–8 May 2026)</a></div>
+        <div><span class="org">ECDC</span><a href="https://www.ecdc.europa.eu/en/infectious-disease-topics/hantavirus-infection/surveillance-and-updates/andes-hantavirus-outbreak">Andes hantavirus outbreak page</a></div>
+        <div><span class="org">WHO</span><a href="https://www.who.int/publications/m/item/multi-country-outbreak-of-mpox--external-situation-report--65---30-april-2026">Mpox sit-rep #65</a></div>
+        <div><span class="org">WHO</span><a href="https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON595">DON 2026-DON595 — Mpox recombinant</a></div>
+        <div><span class="org">ECDC</span><a href="https://www.ecdc.europa.eu/en/mpox-worldwide-overview">Mpox worldwide overview</a></div>
+        <div><span class="org">CDC</span><a href="https://www.cdc.gov/bird-flu/situation-summary/index.html">H5 bird-flu situation summary</a></div>
+        <div><span class="org">NEJM</span><a href="https://www.nejm.org/doi/full/10.1056/NEJMc2518178">First human H5N5 infection (May 2026)</a></div>
+        <div><span class="org">CIDRAP</span><a href="https://www.cidrap.umn.edu/avian-influenza-bird-flu/who-reports-h5n1-death-among-variant-zoonotic-flu-cases-seen-year">WHO H5N1 fatal case update</a></div>
+        <div><span class="org">PBS</span><a href="https://www.pbs.org/newshour/health/medical-epidemiologist-explains-what-to-know-about-the-cruise-ship-hantavirus-outbreak">PBS NewsHour — epidemiologist explainer</a></div>
+        <div><span class="org">CNN</span><a href="https://www.cnn.com/2026/05/10/health/live-news/hantavirus-cruise-outbreak">CNN live coverage</a></div>
+        <div><span class="org">CNBC</span><a href="https://www.cnbc.com/2026/05/09/hantavirus-cruise-ship-mv-hondius-travel-health-risks.html">CNBC business angle</a></div>
+        <div><span class="org">Nature</span><a href="https://www.nature.com/articles/d41586-026-01512-w">Nature — uncertainty about spread</a></div>
+        <div><span class="org">Wikipedia</span><a href="https://en.wikipedia.org/wiki/MV_Hondius_hantavirus_outbreak">MV Hondius hantavirus outbreak</a></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Pathogen of the Week · ISO Week 20 (Mon 11 – Sun 17 May 2026) · Briefing produced 15 May 2026 · Auto-regenerates every Monday 07:00 local time. Data are correct as of the times cited in the source links.
+  </footer>
+
+</div>
+
+<script>
+  // Toggle detail sections
+  document.querySelectorAll('.toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const details = btn.nextElementSibling;
+      const open = details.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? 'Hide detail ▴' : 'Show detail & sources ▾';
+    });
+  });
+
+  // Filter cards
+  const filterButtons = document.querySelectorAll('.filterbar button');
+  const cards = document.querySelectorAll('#cards .card');
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(c => {
+        if (f === 'all' || c.dataset.id === f) c.classList.remove('dim');
+        else c.classList.add('dim');
+      });
+    });
+  });
+
+  // Radar chart (pure SVG)
+  // dims: Severity, Novelty, Attention, Policy urgency, Pandemic potential
+  const data = [
+    { name: 'Andes hantavirus', color: '#f87171', vals: [8.5, 9.0, 9.5, 8.0, 2.5] },
+    { name: 'Mpox clade Ib',    color: '#fbbf24', vals: [5.5, 4.0, 5.0, 7.0, 4.5] },
+    { name: 'H5N1 / H5Nx',      color: '#6ee7ff', vals: [6.0, 5.5, 4.0, 6.5, 7.5] },
+  ];
+  const axes = ['Severity', 'Novelty', 'Attention', 'Policy', 'Pandemic'];
+  const R = 120, N = axes.length;
+  const svg = document.getElementById('radar');
+  const ns = 'http://www.w3.org/2000/svg';
+
+  function point(i, v) {
+    const ang = (Math.PI*2*i/N) - Math.PI/2;
+    const r = (v/10) * R;
+    return [Math.cos(ang)*r, Math.sin(ang)*r];
+  }
+
+  // grid rings
+  for (let k=1;k<=5;k++) {
+    const r = (k/5)*R;
+    const poly = document.createElementNS(ns,'polygon');
+    const pts = [];
+    for (let i=0;i<N;i++) {
+      const ang = (Math.PI*2*i/N) - Math.PI/2;
+      pts.push(`${Math.cos(ang)*r},${Math.sin(ang)*r}`);
+    }
+    poly.setAttribute('points', pts.join(' '));
+    poly.setAttribute('fill','none');
+    poly.setAttribute('stroke','#263158');
+    poly.setAttribute('stroke-width', k===5 ? '1.2' : '0.7');
+    svg.appendChild(poly);
+  }
+  // axes
+  for (let i=0;i<N;i++) {
+    const [x,y] = point(i,10);
+    const line = document.createElementNS(ns,'line');
+    line.setAttribute('x1',0); line.setAttribute('y1',0);
+    line.setAttribute('x2',x); line.setAttribute('y2',y);
+    line.setAttribute('stroke','#263158'); line.setAttribute('stroke-width','0.7');
+    svg.appendChild(line);
+    // label
+    const [lx,ly] = point(i, 11.8);
+    const t = document.createElementNS(ns,'text');
+    t.setAttribute('x', lx); t.setAttribute('y', ly);
+    t.setAttribute('text-anchor', Math.abs(lx)<1?'middle':(lx>0?'start':'end'));
+    t.setAttribute('dominant-baseline', ly<-1?'auto':(ly>1?'hanging':'middle'));
+    t.setAttribute('fill','#9aa3c2');
+    t.setAttribute('font-size','10');
+    t.textContent = axes[i];
+    svg.appendChild(t);
+  }
+  // polygons
+  data.forEach(d => {
+    const poly = document.createElementNS(ns,'polygon');
+    const pts = d.vals.map((v,i) => point(i,v).join(',')).join(' ');
+    poly.setAttribute('points', pts);
+    poly.setAttribute('fill', d.color);
+    poly.setAttribute('fill-opacity','0.18');
+    poly.setAttribute('stroke', d.color);
+    poly.setAttribute('stroke-width','1.6');
+    poly.setAttribute('stroke-linejoin','round');
+    svg.appendChild(poly);
+    // dots
+    d.vals.forEach((v,i) => {
+      const [x,y] = point(i,v);
+      const c = document.createElementNS(ns,'circle');
+      c.setAttribute('cx',x); c.setAttribute('cy',y); c.setAttribute('r',2.5);
+      c.setAttribute('fill', d.color);
+      const t = document.createElementNS(ns,'title');
+      t.textContent = `${d.name} · ${axes[i]}: ${v}`;
+      c.appendChild(t);
+      svg.appendChild(c);
+    });
+  });
+</script>
+</body>
+</html>
