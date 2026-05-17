@@ -9,7 +9,11 @@
   "headline": {
     "title": "This week at a glance",
     "summary": "A new Public Health Emergency of International Concern has been declared. The briefing is restructured around it.",
+<<<<<<< HEAD
     "takeaway": "WHO declared the Ebola Bundibugyo outbreak in DRC's Ituri Province and Uganda a PHEIC on 16 May 2026 — 10 lab-confirmed and ~246 suspected cases, ~80 suspected deaths, with cross-border spread to Kampala via two travellers. There are no approved BVD-specific therapeutics or vaccines and historical Bundibugyo CFR runs 25–35%. The Andes hantavirus MV Hondius cluster has grown to 12 cases (9 confirmed, 2 probable, 1 inconclusive) and docks at Rotterdam on 18 May, but global risk remains assessed as low. Mpox clade Ib is the smoldering background story with continued community transmission across five European countries. H5N1 has been moved off the active list for this week."
+=======
+    "takeaway": "WHO declared the Ebola Bundibugyo outbreak in DRC's Ituri Province and Uganda a PHEIC on 16 May 2026 — 10 lab-confirmed and ~246 suspected cases, ~80 suspected deaths, with cross-border spread to Kampala via two travellers. This is only the third recorded outbreak of Bundibugyo ebolavirus (after Uganda 2007 and DRC 2012). There are no approved BVD-specific therapeutics or vaccines; historical BVD case-fatality has been ~25–35%. The Andes hantavirus MV Hondius cluster has grown to 12 cases (9 confirmed, 2 probable, 1 inconclusive) and docks at Rotterdam on 18 May, but global risk remains assessed as low. Mpox clade Ib is the smoldering background story with continued community transmission across five European countries. H5N1 has been moved off the active list for this week."
+>>>>>>> b3dfb92 (Update data.json)
   },
   "pathogens": [
     {
@@ -23,10 +27,17 @@
       "stats": [
         {"num": "10", "label": "Lab-confirmed cases", "tone": "crit"},
         {"num": "~80", "label": "Suspected deaths", "tone": "crit"},
+<<<<<<< HEAD
         {"num": "25–35%", "label": "Historical BVD CFR", "tone": "warn"}
       ],
       "scores": {"severity": 9.5, "novelty": 8.5, "attention": 9.5, "policy": 9.5, "pandemic": 4.5},
       "why": "WHO declared this outbreak a Public Health Emergency of International Concern on 16 May 2026. It is only the third recorded outbreak of Bundibugyo ebolavirus — a rare ebolavirus species for which no approved therapeutics or vaccines exist (the Ervebo vaccine and approved monoclonal antibodies target Zaire ebolavirus). Two of the four prior outbreaks have been confined to Uganda; this is the first known emergence in DRC's Ituri Province, and the first time BVD has spread internationally during an active outbreak.",
+=======
+        {"num": "~25–35%", "label": "Historical BVD CFR", "tone": "warn"}
+      ],
+      "scores": {"severity": 9.5, "novelty": 8.5, "attention": 9.5, "policy": 9.5, "pandemic": 4.5},
+      "why": "WHO declared this outbreak a Public Health Emergency of International Concern on 16 May 2026. It is only the third recorded outbreak of Bundibugyo ebolavirus — a rare ebolavirus species for which no approved therapeutics or vaccines exist (the Ervebo vaccine and approved monoclonal antibodies target Zaire ebolavirus). The two prior BVD outbreaks were confined within national borders: Uganda's Bundibugyo District in 2007 (149 cases, 37 deaths, ~25% CFR) and DRC's Isiro health zone in 2012 (38 confirmed cases, 13 deaths, ~34% CFR). This is the first known emergence of BVD in DRC's Ituri Province, and the first time the species has spread internationally during an active outbreak.",
+>>>>>>> b3dfb92 (Update data.json)
       "policy_bullets": [
         "Activate cross-border surveillance and exit screening between DRC and Uganda, Rwanda, South Sudan and CAR; brief national EOCs on BVD-specific clinical case definitions.",
         "Stand up isolation and ETC capacity in Bunia and Kampala; pre-position PPE and rapid PCR panels capable of distinguishing BVD from Zaire ebolavirus.",
@@ -43,7 +54,7 @@
         "Transmission": "Direct contact with blood / body fluids; nosocomial amplification a key risk",
         "Incubation": "2–21 days (median ~8–10 days)",
         "Clinical": "Fever, malaise, GI symptoms → haemorrhagic phase, multi-organ failure",
-        "CFR (historical)": "~30–50% across the 4 prior BVD outbreaks (Uganda 2007, DRC 2012, etc.)",
+        "CFR (historical)": "~25–35% — Uganda 2007: 149/37 (25%); DRC Isiro 2012: 38/13 (34%) — only 2 prior BVD outbreaks",
         "Treatment": "Supportive (fluid resuscitation, oxygen); no approved BVD-specific therapeutics",
         "Vaccines": "None approved against BVD; rVSV-ZEBOV (Ervebo) is Zaire-specific. Several BVD candidates in pre-clinical / Phase I."
       },
@@ -51,9 +62,10 @@
         {"label": "WHO DON 2026-DON602", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON602"},
         {"label": "WHO PHEIC declaration", "url": "https://www.who.int/news/item/17-05-2026-epidemic-of-ebola-disease-in-the-democratic-republic-of-the-congo-and-uganda-determined-a-public-health-emergency-of-international-concern"},
         {"label": "Africa CDC statement", "url": "https://africacdc.org/news-item/africa-cdc-calls-for-urgent-regional-coordination-following-ebola-virus-disease-outbreak-in-ituri-province-drc-and-imported-ebola-bundibugyo-case-reported-by-uganda/"},
-        {"label": "CNN explainer", "url": "https://www.cnn.com/2026/05/17/africa/ebola-outbreak-congo-uganda-explainer-intl"},
-        {"label": "NPR coverage", "url": "https://www.npr.org/2026/05/16/g-s1-122494/new-ebola-outbreak-drc-who-global-emergency"},
-        {"label": "Fortune background", "url": "https://fortune.com/2026/05/17/who-ebola-outbreak-congo-uganda-global-health-emergency-rare-variant-bundibugyo-virus/"}
+        {"label": "Africa CDC DG statement", "url": "https://africacdc.org/news-item/ebola-response-statement-from-the-director-general-africa-cdc/"},
+        {"label": "UKHSA / GOV.UK", "url": "https://www.gov.uk/guidance/ebola-and-marburg-haemorrhagic-fevers-outbreaks-and-case-locations"},
+        {"label": "PHAC Ebola page", "url": "https://www.canada.ca/en/public-health/services/diseases/ebola.html"},
+        {"label": "BVD outbreak history (Wikipedia)", "url": "https://en.wikipedia.org/wiki/Bundibugyo_ebolavirus"}
       ]
     },
     {
@@ -137,6 +149,10 @@
     {"org": "WHO", "title": "DON 2026-DON602 — Ebola Bundibugyo, DRC & Uganda", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON602"},
     {"org": "WHO", "title": "PHEIC declaration (16 May 2026)", "url": "https://www.who.int/news/item/17-05-2026-epidemic-of-ebola-disease-in-the-democratic-republic-of-the-congo-and-uganda-determined-a-public-health-emergency-of-international-concern"},
     {"org": "Africa CDC", "title": "Regional coordination statement", "url": "https://africacdc.org/news-item/africa-cdc-calls-for-urgent-regional-coordination-following-ebola-virus-disease-outbreak-in-ituri-province-drc-and-imported-ebola-bundibugyo-case-reported-by-uganda/"},
+    {"org": "Africa CDC", "title": "Director-General Ebola response statement", "url": "https://africacdc.org/news-item/ebola-response-statement-from-the-director-general-africa-cdc/"},
+    {"org": "UKHSA", "title": "UK Ebola & Marburg outbreak locations", "url": "https://www.gov.uk/guidance/ebola-and-marburg-haemorrhagic-fevers-outbreaks-and-case-locations"},
+    {"org": "PHAC", "title": "Canada Ebola public-health page", "url": "https://www.canada.ca/en/public-health/services/diseases/ebola.html"},
+    {"org": "PHAC", "title": "CATMAT Ebola traveller surveillance", "url": "https://www.canada.ca/en/public-health/services/catmat/ebola-virus-disease-preventive-measures-monitoring-surveillance-travellers.html"},
     {"org": "CNN", "title": "Ebola outbreak explainer", "url": "https://www.cnn.com/2026/05/17/africa/ebola-outbreak-congo-uganda-explainer-intl"},
     {"org": "NPR", "title": "New Ebola outbreak, WHO emergency", "url": "https://www.npr.org/2026/05/16/g-s1-122494/new-ebola-outbreak-drc-who-global-emergency"},
     {"org": "Fortune", "title": "Rare Bundibugyo variant background", "url": "https://fortune.com/2026/05/17/who-ebola-outbreak-congo-uganda-global-health-emergency-rare-variant-bundibugyo-virus/"},
