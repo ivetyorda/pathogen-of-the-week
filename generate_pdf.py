@@ -244,7 +244,7 @@ footer.page-foot a {{ color: #0f172a; text-decoration: none; }}
 <body>
   <header class="page-head">
     <div class="brand">Pathogen of the Week
-      <small>Weekly briefing for policymakers · WHO · ECDC · CDC · open-source signals</small>
+      <small>Weekly briefing for policymakers · WHO · Africa CDC · ECDC · US CDC · UKHSA · PHAC · open-source signals</small>
     </div>
     <div class="week">
       <b>{escape(week_label)}</b><br>

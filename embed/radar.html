@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Pathogen of the Week — side-by-side signal comparison</title>
+<meta name="description" content="Interactive radar comparison of this week's top infectious-disease signals." />
+<style>
+  :root {
+    --bg: transparent;
+    --bg-elev: #131a32;
+    --bg-soft: #1a2244;
+    --line: #263158;
+    --text: #e8ecf7;
+    --muted: #9aa3c2;
+    --accent: #6ee7ff;
+    --accent-2: #a78bfa;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+  }
+  .embed {
+    background:
+      radial-gradient(900px 400px at 80% -20%, rgba(167,139,250,0.10), transparent 60%),
+      radial-gradient(700px 350px at -10% 30%, rgba(110,231,255,0.08), transparent 60%),
+      #0b1020;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 18px 20px 16px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+  }
+  .head { margin-bottom: 12px; }
+  .head h2 { margin: 0 0 4px; font-size: 16px; letter-spacing: -0.01em; }
+  .head p  { margin: 0; color: var(--muted); font-size: 12.5px; }
+  .head .week {
+    display: inline-block; margin-top: 8px;
+    padding: 3px 10px; border-radius: 999px;
+    background: rgba(110,231,255,0.10); border: 1px solid rgba(110,231,255,0.40);
+    color: #bef0ff; font-size: 11px; letter-spacing: 0.04em;
+  }
+
+  .grid {
+    display: grid; grid-template-columns: minmax(240px, 320px) 1fr; gap: 18px;
+    align-items: start;
+  }
+  @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+  .radar-wrap { display: grid; place-items: center; position: relative; }
+  #radar { overflow: visible; }
+  #radar polygon.path { transition: fill-opacity 0.15s, stroke-opacity 0.15s, stroke-width 0.15s; }
+
+  .legend {
+    display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;
+    margin-top: 10px; font-size: 11.5px;
+  }
+  .legend button {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 9px; border-radius: 999px;
+    background: var(--bg-soft); color: var(--text);
+    border: 1px solid var(--line); cursor: pointer;
+    font-size: 11px; transition: 0.15s ease;
+    font-family: inherit;
+  }
+  .legend button:hover { border-color: var(--accent); }
+  .legend button.off { color: var(--muted); opacity: 0.55; text-decoration: line-through; }
+  .legend button.off i { opacity: 0.45; }
+  .legend i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+
+  #radar-tip {
+    position: absolute; pointer-events: none;
+    background: #0b1020;
+    color: var(--text);
+    border: 1px solid var(--accent);
+    border-radius: 8px;
+    padding: 7px 10px;
+    font-size: 11.5px;
+    line-height: 1.4;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.45);
+    display: none; z-index: 10;
+    min-width: 160px;
+  }
+  #radar-tip b { color: var(--accent); display: block; margin-bottom: 3px; font-size: 12px; }
+  #radar-tip .tip-row { display: flex; justify-content: space-between; gap: 12px; font-variant-numeric: tabular-nums; }
+  #radar-tip .tip-row span:last-child { font-weight: 600; }
+  #radar-tip .tip-row span:first-child { color: var(--muted); }
+
+  table.signals {
+    width: 100%; border-collapse: collapse; font-size: 12.5px;
+  }
+  table.signals th, table.signals td {
+    text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line);
+  }
+  table.signals th {
+    color: var(--muted); font-weight: 500; font-size: 11px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  table.signals tr:last-child td { border-bottom: none; }
+  table.signals td.num { font-variant-numeric: tabular-nums; text-align: right; }
+  table.signals .swatch { display: inline-block; width: 9px; height: 9px; border-radius: 3px; margin-right: 6px; vertical-align: middle; }
+
+  .foot {
+    margin-top: 10px; padding-top: 8px; border-top: 1px solid var(--line);
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 11px; color: var(--muted); flex-wrap: wrap; gap: 6px;
+  }
+  .foot a { color: var(--accent); text-decoration: none; }
+  .foot a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="embed" role="region" aria-label="Side-by-side signal comparison">
+  <div class="head">
+    <h2>Side-by-side signal comparison</h2>
+    <p>Composite scoring across five dimensions. Hover a polygon for all five scores; click a legend entry to toggle that pathogen on or off.</p>
+    <span class="week" id="week-chip">Loading…</span>
+  </div>
+
+  <div class="grid">
+    <div class="radar-wrap">
+      <svg id="radar" viewBox="-200 -170 400 340" width="100%" height="auto" style="max-width:340px" role="img" aria-label="Radar chart comparing pathogens"></svg>
+      <div class="legend" id="radar-legend"></div>
+      <div id="radar-tip" role="tooltip"></div>
+    </div>
+
+    <table class="signals" aria-label="Numeric comparison table">
+      <thead>
+        <tr id="table-head">
+          <th>Signal</th>
+        </tr>
+      </thead>
+      <tbody id="table-body"></tbody>
+    </table>
+  </div>
+
+  <div class="foot">
+    <span id="foot-source">Pathogen of the Week · weekly briefing</span>
+    <a id="foot-link" href="https://ivetyorda.github.io/pathogen-of-the-week/" target="_blank" rel="noopener">View full dashboard →</a>
+  </div>
+</div>
+
+<script>
+  // ---- Built-in snapshot (used if data.json fetch fails) ----
+  const FALLBACK = {
+    iso_year: 2026, iso_week: 20,
+    week_start: "2026-05-11", week_end: "2026-05-17",
+    pathogens: [
+      { name: "Ebola Bundibugyo", color: "#f87171",
+        scores: { severity: 9.5, novelty: 8.5, attention: 9.5, policy: 9.5, pandemic: 4.5 } },
+      { name: "Andes hantavirus", color: "#fbbf24",
+        scores: { severity: 8.5, novelty: 7.0, attention: 7.5, policy: 7.5, pandemic: 2.5 } },
+      { name: "Mpox clade Ib", color: "#6ee7ff",
+        scores: { severity: 5.5, novelty: 4.0, attention: 5.0, policy: 7.0, pandemic: 4.5 } }
+    ]
+  };
+
+  // Score order
+  const DIMS = [
+    { key: "severity",  short: "Severity",   full: "Severity" },
+    { key: "novelty",   short: "Novelty",    full: "Novelty" },
+    { key: "attention", short: "Attention",  full: "Public attention" },
+    { key: "policy",    short: "Policy",     full: "Policy urgency" },
+    { key: "pandemic",  short: "Pandemic",   full: "Pandemic potential" }
+  ];
+  const PALETTE = ["#f87171", "#fbbf24", "#6ee7ff", "#a78bfa"];
+
+  function fmtWeek(d) {
+    const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    const start = d.week_start, end = d.week_end;
+    if (!start || !end) return `Week ${d.iso_week} · ${d.iso_year}`;
+    const sd = start.slice(-2).replace(/^0/, "");
+    const ed = end.slice(-2).replace(/^0/, "");
+    const m  = months[parseInt(end.split("-")[1], 10) - 1];
+    return `Week ${d.iso_week} · Mon ${sd} – Sun ${ed} ${m} ${d.iso_year}`;
+  }
+
+  function normalize(raw) {
+    // Accept either the dashboard's data.json shape or the fallback shape.
+    const items = (raw.pathogens || []).map((p, i) => {
+      const color = p.color || PALETTE[i % PALETTE.length];
+      const name  = p.name || `Pathogen ${i+1}`;
+      const sc    = p.scores || {};
+      const vals  = DIMS.map(d => Number(sc[d.key] || 0));
+      return { name, color, vals };
+    });
+    return {
+      week_label: fmtWeek(raw),
+      items
+    };
+  }
+
+  function render(model) {
+    document.getElementById("week-chip").textContent = model.week_label;
+
+    // Legend
+    const legendEl = document.getElementById("radar-legend");
+    legendEl.innerHTML = model.items.map((it, i) =>
+      `<button type="button" data-i="${i}"><i style="background:${it.color}"></i> ${it.name}</button>`
+    ).join("");
+
+    // Table
+    const head = document.getElementById("table-head");
+    head.innerHTML = "<th>Signal</th>" + model.items.map(it =>
+      `<th><span class="swatch" style="background:${it.color}"></span>${it.name}</th>`
+    ).join("");
+    const body = document.getElementById("table-body");
+    let rows = "";
+    DIMS.forEach((dim, di) => {
+      rows += `<tr><td>${dim.full}</td>` +
+        model.items.map(it => `<td class="num">${it.vals[di].toFixed(1)}</td>`).join("") +
+      `</tr>`;
+    });
+    // composite row
+    rows += `<tr><td><b>Composite (mean)</b></td>` +
+      model.items.map(it => {
+        const c = it.vals.reduce((s,v)=>s+v,0) / it.vals.length;
+        return `<td class="num"><b>${c.toFixed(1)}</b></td>`;
+      }).join("") + `</tr>`;
+    body.innerHTML = rows;
+
+    drawRadar(model.items);
+  }
+
+  function drawRadar(items) {
+    const svg = document.getElementById("radar");
+    const tip = document.getElementById("radar-tip");
+    const wrap = document.querySelector(".radar-wrap");
+    const ns = "http://www.w3.org/2000/svg";
+    svg.innerHTML = ""; // clear
+
+    const R = 120, N = DIMS.length;
+
+    function point(i, v) {
+      const ang = (Math.PI*2*i/N) - Math.PI/2;
+      const r = (v/10) * R;
+      return [Math.cos(ang)*r, Math.sin(ang)*r];
+    }
+
+    // grid rings
+    for (let k=1;k<=5;k++) {
+      const r = (k/5)*R;
+      const poly = document.createElementNS(ns,"polygon");
+      const pts = [];
+      for (let i=0;i<N;i++) {
+        const ang = (Math.PI*2*i/N) - Math.PI/2;
+        pts.push(`${Math.cos(ang)*r},${Math.sin(ang)*r}`);
+      }
+      poly.setAttribute("points", pts.join(" "));
+      poly.setAttribute("fill","none");
+      poly.setAttribute("stroke","#263158");
+      poly.setAttribute("stroke-width", k===5 ? "1.2" : "0.7");
+      svg.appendChild(poly);
+    }
+    // axes + labels
+    for (let i=0;i<N;i++) {
+      const [x,y] = point(i,10);
+      const line = document.createElementNS(ns,"line");
+      line.setAttribute("x1",0); line.setAttribute("y1",0);
+      line.setAttribute("x2",x); line.setAttribute("y2",y);
+      line.setAttribute("stroke","#263158"); line.setAttribute("stroke-width","0.7");
+      svg.appendChild(line);
+      const [lx,ly] = point(i, 11.8);
+      const t = document.createElementNS(ns,"text");
+      t.setAttribute("x", lx); t.setAttribute("y", ly);
+      t.setAttribute("text-anchor", Math.abs(lx)<1?"middle":(lx>0?"start":"end"));
+      t.setAttribute("dominant-baseline", ly<-1?"auto":(ly>1?"hanging":"middle"));
+      t.setAttribute("fill","#9aa3c2");
+      t.setAttribute("font-size","10");
+      t.textContent = DIMS[i].short;
+      svg.appendChild(t);
+    }
+
+    // pathogen polygons
+    const polys = [];
+    const dotsByPath = [];
+    items.forEach((d, idx) => {
+      const poly = document.createElementNS(ns,"polygon");
+      const pts = d.vals.map((v,i) => point(i,v).join(",")).join(" ");
+      poly.setAttribute("points", pts);
+      poly.setAttribute("fill", d.color);
+      poly.setAttribute("stroke", d.color);
+      poly.setAttribute("stroke-linejoin","round");
+      poly.setAttribute("class","path");
+      poly.style.cursor = "crosshair";
+      svg.appendChild(poly);
+      polys.push(poly);
+
+      const dotGroup = [];
+      d.vals.forEach((v,i) => {
+        const [x,y] = point(i,v);
+        const c = document.createElementNS(ns,"circle");
+        c.setAttribute("cx",x); c.setAttribute("cy",y); c.setAttribute("r",2.5);
+        c.setAttribute("fill", d.color);
+        c.style.pointerEvents = "none";
+        svg.appendChild(c);
+        dotGroup.push(c);
+      });
+      dotsByPath.push(dotGroup);
+    });
+
+    // interactivity
+    const visible = new Set(items.map((_,i)=>i));
+    let hovered = -1;
+    const legendItems = Array.from(document.querySelectorAll("#radar-legend button"));
+
+    function refresh() {
+      items.forEach((d, idx) => {
+        const poly = polys[idx];
+        const dots = dotsByPath[idx];
+        let fillOp, strokeOp, strokeW;
+        if (!visible.has(idx)) {
+          fillOp = 0; strokeOp = 0.15; strokeW = 1.2;
+          dots.forEach(c => c.setAttribute("fill-opacity","0.15"));
+        } else if (hovered === -1) {
+          fillOp = 0.18; strokeOp = 1; strokeW = 1.6;
+          dots.forEach(c => c.setAttribute("fill-opacity","1"));
+        } else if (hovered === idx) {
+          fillOp = 0.42; strokeOp = 1; strokeW = 2.4;
+          dots.forEach(c => { c.setAttribute("fill-opacity","1"); c.setAttribute("r","3.2"); });
+        } else {
+          fillOp = 0.05; strokeOp = 0.25; strokeW = 1.2;
+          dots.forEach(c => { c.setAttribute("fill-opacity","0.3"); c.setAttribute("r","2.5"); });
+        }
+        poly.setAttribute("fill-opacity", fillOp);
+        poly.setAttribute("stroke-opacity", strokeOp);
+        poly.setAttribute("stroke-width", strokeW);
+        if (hovered !== idx) dots.forEach(c => c.setAttribute("r","2.5"));
+      });
+      legendItems.forEach((li, idx) => li.classList.toggle("off", !visible.has(idx)));
+    }
+
+    function showTip(idx, e) {
+      const d = items[idx];
+      const rows = DIMS.map((a,i) =>
+        `<div class="tip-row"><span>${a.full}</span><span style="color:${d.color}">${d.vals[i].toFixed(1)}</span></div>`
+      ).join("");
+      const composite = (d.vals.reduce((s,v)=>s+v,0) / d.vals.length).toFixed(1);
+      tip.innerHTML = `<b style="color:${d.color}">${d.name}</b>${rows}` +
+        `<div class="tip-row" style="margin-top:3px;padding-top:3px;border-top:1px solid #263158"><span>Composite</span><span style="color:${d.color}">${composite}</span></div>`;
+      tip.style.display = "block";
+      positionTip(e);
+    }
+
+    function positionTip(e) {
+      const r = wrap.getBoundingClientRect();
+      const tipW = tip.offsetWidth;
+      const tipH = tip.offsetHeight;
+      let x = e.clientX - r.left + 12;
+      let y = e.clientY - r.top  + 12;
+      if (x + tipW > r.width)  x = e.clientX - r.left - tipW - 12;
+      if (y + tipH > r.height) y = e.clientY - r.top  - tipH - 12;
+      tip.style.left = x + "px";
+      tip.style.top  = y + "px";
+    }
+
+    polys.forEach((poly, idx) => {
+      poly.addEventListener("mouseenter", e => {
+        if (!visible.has(idx)) return;
+        hovered = idx; refresh(); showTip(idx, e);
+      });
+      poly.addEventListener("mousemove", e => {
+        if (hovered === idx) positionTip(e);
+      });
+      poly.addEventListener("mouseleave", () => {
+        hovered = -1; tip.style.display = "none"; refresh();
+      });
+    });
+
+    legendItems.forEach((li, idx) => {
+      li.addEventListener("click", () => {
+        if (visible.has(idx)) {
+          if (visible.size > 1) visible.delete(idx);
+        } else {
+          visible.add(idx);
+        }
+        refresh();
+      });
+    });
+
+    refresh();
+  }
+
+  // Fetch data.json relative to this page; fall back to embedded snapshot.
+  fetch("../data.json", { cache: "no-cache" })
+    .then(r => r.ok ? r.json() : Promise.reject(r.status))
+    .then(d => render(normalize(d)))
+    .catch(() => render(normalize(FALLBACK)));
+</script>
+
+</body>
+</html>
