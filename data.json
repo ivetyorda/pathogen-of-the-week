@@ -4,33 +4,77 @@
   "iso_week": 20,
   "week_start": "2026-05-11",
   "week_end": "2026-05-17",
-  "produced_on": "2026-05-15",
+  "produced_on": "2026-05-17",
   "site_url": "https://ivetyorda.github.io/pathogen-of-the-week/",
   "headline": {
     "title": "This week at a glance",
-    "summary": "An acute novel transmission event dominates the briefing for week 20. Two longer-running concerns continue to require attention; one global threat has receded.",
-    "takeaway": "The Andes hantavirus cluster aboard the MV Hondius — 11 cases, 3 deaths, ~27% case-fatality, multi-country dispersal of contacts — is this week's leading signal because it is acute, novel in setting, and saturating both official channels and public attention. Mpox clade Ib remains a smoldering PHEIC with continued community transmission in five European countries. H5N1 stays on the long-watch list given persistent US dairy-cattle spread and a fresh fatal pediatric case abroad. Global public-health risk from the hantavirus event is currently assessed as low by WHO; pandemic potential is judged limited by independent virologists."
+    "summary": "A new Public Health Emergency of International Concern has been declared. The briefing is restructured around it.",
+    "takeaway": "WHO declared the Ebola Bundibugyo outbreak in DRC's Ituri Province and Uganda a PHEIC on 16 May 2026 — 10 lab-confirmed and ~246 suspected cases, ~80 suspected deaths, with cross-border spread to Kampala via two travellers. There are no approved BVD-specific therapeutics or vaccines and historical Bundibugyo CFR runs 30–50%. The Andes hantavirus MV Hondius cluster has grown to 12 cases (9 confirmed, 2 probable, 1 inconclusive) and docks at Rotterdam on 18 May, but global risk remains assessed as low. Mpox clade Ib is the smoldering background story with continued community transmission across five European countries. H5N1 has been moved off the active list for this week."
   },
   "pathogens": [
     {
+      "id": "ebola",
+      "tag": "acute",
+      "tag_label": "Acute event · Lead story · PHEIC",
+      "is_lead": true,
+      "name": "Ebola Bundibugyo",
+      "scientific_name": "Bundibugyo ebolavirus (BVD) — DRC Ituri outbreak with cross-border spread to Uganda",
+      "location": "DRC Ituri Province (Bunia, Rwampara, Mongbwalu) · imported case cluster in Kampala, Uganda",
+      "stats": [
+        {"num": "10", "label": "Lab-confirmed cases", "tone": "crit"},
+        {"num": "~80", "label": "Suspected deaths", "tone": "crit"},
+        {"num": "30–50%", "label": "Historical BVD CFR", "tone": "warn"}
+      ],
+      "scores": {"severity": 9.5, "novelty": 8.5, "attention": 9.5, "policy": 9.5, "pandemic": 4.5},
+      "why": "WHO declared this outbreak a Public Health Emergency of International Concern on 16 May 2026. It is only the fifth recorded outbreak of Bundibugyo ebolavirus — a rare ebolavirus species for which no approved therapeutics or vaccines exist (the Ervebo vaccine and approved monoclonal antibodies target Zaire ebolavirus). Two of the four prior outbreaks have been confined to Uganda; this is the first known emergence in DRC's Ituri Province, and the first time BVD has spread internationally during an active outbreak.",
+      "policy_bullets": [
+        "Activate cross-border surveillance and exit screening between DRC and Uganda, Rwanda, South Sudan and CAR; brief national EOCs on BVD-specific clinical case definitions.",
+        "Stand up isolation and ETC capacity in Bunia and Kampala; pre-position PPE and rapid PCR panels capable of distinguishing BVD from Zaire ebolavirus.",
+        "Coordinate with WHO R&D Blueprint and IFFIm on emergency-use access to investigational BVD vaccines and mAbs; existing Zaire-targeted countermeasures cannot be assumed cross-protective.",
+        "Brief travel-health authorities and airlines flying KGL–EBB–NBO–KIN corridors; prepare contact-tracing protocols for incoming flights from Uganda and DRC.",
+        "Communicate early and clearly: BVD is haemorrhagic but not airborne; transmission is through direct contact with body fluids of symptomatic patients."
+      ],
+      "details": {
+        "First notified": "10 May 2026 (DRC MoH) · WHO DON 2026-DON602 published 14 May",
+        "PHEIC declared": "16 May 2026 (WHO IHR Emergency Committee)",
+        "Index location": "Bunia health zone, Ituri Province, DRC",
+        "Pathogen": "Bundibugyo ebolavirus (Filoviridae, Orthoebolavirus bundibugyoense)",
+        "Cross-border": "2 lab-confirmed cases · 1 death in Kampala, Uganda (travellers from DRC, 15–16 May)",
+        "Transmission": "Direct contact with blood / body fluids; nosocomial amplification a key risk",
+        "Incubation": "2–21 days (median ~8–10 days)",
+        "Clinical": "Fever, malaise, GI symptoms → haemorrhagic phase, multi-organ failure",
+        "CFR (historical)": "~30–50% across the 4 prior BVD outbreaks (Uganda 2007, DRC 2012, etc.)",
+        "Treatment": "Supportive (fluid resuscitation, oxygen); no approved BVD-specific therapeutics",
+        "Vaccines": "None approved against BVD; rVSV-ZEBOV (Ervebo) is Zaire-specific. Several BVD candidates in pre-clinical / Phase I."
+      },
+      "sources": [
+        {"label": "WHO DON 2026-DON602", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON602"},
+        {"label": "WHO PHEIC declaration", "url": "https://www.who.int/news/item/17-05-2026-epidemic-of-ebola-disease-in-the-democratic-republic-of-the-congo-and-uganda-determined-a-public-health-emergency-of-international-concern"},
+        {"label": "Africa CDC statement", "url": "https://africacdc.org/news-item/africa-cdc-calls-for-urgent-regional-coordination-following-ebola-virus-disease-outbreak-in-ituri-province-drc-and-imported-ebola-bundibugyo-case-reported-by-uganda/"},
+        {"label": "CNN explainer", "url": "https://www.cnn.com/2026/05/17/africa/ebola-outbreak-congo-uganda-explainer-intl"},
+        {"label": "NPR coverage", "url": "https://www.npr.org/2026/05/16/g-s1-122494/new-ebola-outbreak-drc-who-global-emergency"},
+        {"label": "Fortune background", "url": "https://fortune.com/2026/05/17/who-ebola-outbreak-congo-uganda-global-health-emergency-rare-variant-bundibugyo-virus/"}
+      ]
+    },
+    {
       "id": "hanta",
       "tag": "acute",
-      "tag_label": "Acute event · Lead story",
-      "is_lead": true,
+      "tag_label": "Acute event · Ongoing",
+      "is_lead": false,
       "name": "Andes hantavirus",
       "scientific_name": "Orthohantavirus andesense (ANDV) — MV Hondius cluster",
-      "location": "Atlantic crossing · disembark Tenerife · contacts in 19 countries",
+      "location": "Atlantic crossing · docks Rotterdam 18 May 2026 · contacts in 19 countries",
       "stats": [
-        {"num": "11", "label": "Cases", "tone": "crit"},
+        {"num": "12", "label": "Cases (9 confirmed, 2 probable, 1 inconclusive)", "tone": "crit"},
         {"num": "3", "label": "Deaths", "tone": "crit"},
-        {"num": "~27%", "label": "CFR", "tone": "warn"}
+        {"num": "~25%", "label": "CFR (current)", "tone": "warn"}
       ],
-      "scores": {"severity": 8.5, "novelty": 9.0, "attention": 9.5, "policy": 8.0, "pandemic": 2.5},
-      "why": "First known hantavirus outbreak on a cruise ship. Strong sequencing evidence of limited human-to-human transmission of Andes virus on board — the only hantavirus species with documented person-to-person spread. Passengers of 19 nationalities have now dispersed via military and government repatriation flights.",
+      "scores": {"severity": 8.5, "novelty": 7.0, "attention": 7.5, "policy": 7.5, "pandemic": 2.5},
+      "why": "The cluster has grown to 12 cases (9 confirmed) since first flagged. The vessel docks at Rotterdam on 18 May 2026 with passengers and crew of 19 nationalities, triggering a coordinated Dutch / ECDC / WHO disembarkation and contact-tracing operation. Sequencing continues to point to limited human-to-human transmission — Andes is the only hantavirus species with documented person-to-person spread. WHO still assesses global public-health risk as low.",
       "policy_bullets": [
         "Coordinate cross-border contact tracing for repatriated passengers (incubation window up to ~6 weeks).",
-        "Brief ports, cruise lines and travel-health authorities on rodent-exclusion and onboard isolation protocols.",
-        "Avoid over-reaction: WHO assesses global public-health risk as low; no sustained transmission outside the ship.",
+        "Support Dutch port-of-entry disembarkation plan: medical triage, onboard isolation of any symptomatic contacts, environmental decontamination of cabins.",
+        "Brief cruise lines and travel-health authorities on rodent-exclusion and onboard isolation protocols.",
         "Confirm domestic clinical alert pathways — many physicians have never seen HPS."
       ],
       "details": {
@@ -42,7 +86,7 @@
         "Clinical": "Fever, GI symptoms → ARDS / cardiopulmonary shock",
         "CFR (Andes)": "~25–40% in past Latin-American outbreaks",
         "Treatment": "Supportive (ICU, ECMO); no licensed antiviral or vaccine",
-        "EU response": "ECDC published rapid risk assessment 14 May 2026"
+        "EU response": "ECDC RRA 14 May 2026; Dutch disembarkation plan published 16 May"
       },
       "sources": [
         {"label": "WHO DON", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON601"},
@@ -65,7 +109,7 @@
         {"num": "74", "label": "Clade I · EU/EEA (Feb–Mar)", "tone": "neutral"}
       ],
       "scores": {"severity": 5.5, "novelty": 4.0, "attention": 5.0, "policy": 7.0, "pandemic": 4.5},
-      "why": "The overall African trend is declining since May 2025, but sustained community transmission of clade Ib continues in Austria, Belgium, Portugal, Spain and the UK, mostly in sexual networks of MSM. A WHO situation report (#65) and an ECDC weekly threats note both updated this month. A novel clade Ib/IIb recombinant has been flagged in WHO DON 2026-DON595 — worth monitoring.",
+      "why": "The overall African trend is declining since May 2025, but sustained community transmission of clade Ib continues in Austria, Belgium, Portugal, Spain and the UK, mostly in sexual networks of MSM. A WHO situation report (#65) and an ECDC weekly threats note both updated this month. A novel clade Ib/IIb recombinant has been flagged in WHO DON 2026-DON595 — worth monitoring. The DRC overlap with the new Ebola Bundibugyo outbreak compounds the operational burden on national health authorities.",
       "policy_bullets": [
         "Sustain targeted JYNNEOS / MVA-BN vaccine availability for at-risk groups; supply tightening in some markets.",
         "Maintain non-stigmatizing messaging through community organizations; avoid travel restrictions.",
@@ -87,63 +131,24 @@
         {"label": "Sit-rep #65", "url": "https://www.who.int/publications/m/item/multi-country-outbreak-of-mpox--external-situation-report--65---30-april-2026"},
         {"label": "DON 2026-DON595", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON595"}
       ]
-    },
-    {
-      "id": "h5n1",
-      "tag": "watch",
-      "tag_label": "On the watch list",
-      "is_lead": false,
-      "name": "H5N1 / H5Nx avian influenza",
-      "scientific_name": "Influenza A virus, H5 subtypes (incl. H5N1 2.3.4.4b, H5N5)",
-      "location": "Cattle in 19 US states · sporadic human cases globally · 1st human H5N5 confirmed",
-      "stats": [
-        {"num": "57", "label": "US human H5N1 cases (cumulative)", "tone": "warn"},
-        {"num": "13", "label": "Global zoonotic flu cases Q1 2026", "tone": "neutral"},
-        {"num": "1", "label": "New fatal pediatric case (Bangladesh)", "tone": "crit"}
-      ],
-      "scores": {"severity": 6.0, "novelty": 5.5, "attention": 4.0, "policy": 6.5, "pandemic": 7.5},
-      "why": "The headline number is quiet, but the substrate is not. H5N1 continues to spread in US dairy cattle across 19 states, with 57 cumulative human cases (mostly farm workers). May 2026 saw the first confirmed human H5N5 infection (NEJM) and one new fatal pediatric H5N1 case in Bangladesh. No sustained human-to-human transmission. Pandemic-preparedness risk remains the highest among the three pathogens here.",
-      "policy_bullets": [
-        "Maintain PPE distribution and seroprevalence studies for dairy / poultry workers.",
-        "Accelerate H5 candidate vaccine procurement contracts (matched-strain stocks).",
-        "Mandate bulk-tank milk surveillance; FDA retail-milk monitoring remains the early-warning workhorse.",
-        "Pre-position diagnostics & antivirals; review cross-border alerts for human clusters."
-      ],
-      "details": {
-        "US cattle states": "19 (AZ, CA, CO, ID, IA, KS, MI, MN, NE, NV, NM, NC, OH, OK, SD, TX, UT, WI, WY)",
-        "US human H5N1": "57 cumulative confirmed (34 cattle-linked, 21 poultry-linked, 2 unknown)",
-        "US H5N5 human": "1 confirmed (75-y-o female; NEJM May 2026)",
-        "Global Q1 2026": "13 avian/swine flu cases tracked by WHO",
-        "CDC risk": "Low to general public; elevated for occupational exposure",
-        "Vaccines": "H5N8/H5N1 candidate stocks held by US BARDA, EU HERA",
-        "Treatment": "Oseltamivir / baloxavir; resistance not yet documented"
-      },
-      "sources": [
-        {"label": "CDC bird-flu summary", "url": "https://www.cdc.gov/bird-flu/situation-summary/index.html"},
-        {"label": "NEJM: First human H5N5", "url": "https://www.nejm.org/doi/full/10.1056/NEJMc2518178"},
-        {"label": "FDA retail-milk monitoring", "url": "https://www.fda.gov/food/alerts-advisories-safety-information/investigation-avian-influenza-h5n1-virus-dairy-cattle"},
-        {"label": "CIDRAP / WHO update", "url": "https://www.cidrap.umn.edu/avian-influenza-bird-flu/who-reports-h5n1-death-among-variant-zoonotic-flu-cases-seen-year"}
-      ]
     }
   ],
   "all_sources": [
+    {"org": "WHO", "title": "DON 2026-DON602 — Ebola Bundibugyo, DRC & Uganda", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON602"},
+    {"org": "WHO", "title": "PHEIC declaration (16 May 2026)", "url": "https://www.who.int/news/item/17-05-2026-epidemic-of-ebola-disease-in-the-democratic-republic-of-the-congo-and-uganda-determined-a-public-health-emergency-of-international-concern"},
+    {"org": "Africa CDC", "title": "Regional coordination statement", "url": "https://africacdc.org/news-item/africa-cdc-calls-for-urgent-regional-coordination-following-ebola-virus-disease-outbreak-in-ituri-province-drc-and-imported-ebola-bundibugyo-case-reported-by-uganda/"},
+    {"org": "CNN", "title": "Ebola outbreak explainer", "url": "https://www.cnn.com/2026/05/17/africa/ebola-outbreak-congo-uganda-explainer-intl"},
+    {"org": "NPR", "title": "New Ebola outbreak, WHO emergency", "url": "https://www.npr.org/2026/05/16/g-s1-122494/new-ebola-outbreak-drc-who-global-emergency"},
+    {"org": "Fortune", "title": "Rare Bundibugyo variant background", "url": "https://fortune.com/2026/05/17/who-ebola-outbreak-congo-uganda-global-health-emergency-rare-variant-bundibugyo-virus/"},
     {"org": "WHO", "title": "DON 2026-DON601 — Hantavirus cruise ship", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON601"},
     {"org": "WHO", "title": "WHO response statement (7 May 2026)", "url": "https://www.who.int/news/item/07-05-2026-who-s-response-to-hantavirus-cases-linked-to-a-cruise-ship"},
     {"org": "CDC", "title": "HAN-528 hantavirus advisory", "url": "https://www.cdc.gov/han/php/notices/han00528.html"},
-    {"org": "CDC", "title": "CDC Hondius update", "url": "https://www.cdc.gov/media/releases/2026/2026-cdc-provides-update-on-hantavirus-outbreak-linked-to-m-v-hondius-cruise-ship.html"},
+    {"org": "ECDC", "title": "ECDC Andes hantavirus outbreak page", "url": "https://www.ecdc.europa.eu/en/infectious-disease-topics/hantavirus-infection/surveillance-and-updates/andes-hantavirus-outbreak"},
     {"org": "ECDC", "title": "CDTR Week 20 (9–13 May 2026)", "url": "https://www.ecdc.europa.eu/en/publications-data/communicable-disease-threats-report-9-13-may-2026-week-20"},
-    {"org": "ECDC", "title": "CDTR Week 19 (2–8 May 2026)", "url": "https://www.ecdc.europa.eu/en/publications-data/communicable-disease-threats-report-2-8-may-2026-week-19"},
-    {"org": "ECDC", "title": "Andes hantavirus outbreak page", "url": "https://www.ecdc.europa.eu/en/infectious-disease-topics/hantavirus-infection/surveillance-and-updates/andes-hantavirus-outbreak"},
     {"org": "WHO", "title": "Mpox sit-rep #65", "url": "https://www.who.int/publications/m/item/multi-country-outbreak-of-mpox--external-situation-report--65---30-april-2026"},
     {"org": "WHO", "title": "DON 2026-DON595 — Mpox recombinant", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON595"},
     {"org": "ECDC", "title": "Mpox worldwide overview", "url": "https://www.ecdc.europa.eu/en/mpox-worldwide-overview"},
-    {"org": "CDC", "title": "H5 bird-flu situation summary", "url": "https://www.cdc.gov/bird-flu/situation-summary/index.html"},
-    {"org": "NEJM", "title": "First human H5N5 infection (May 2026)", "url": "https://www.nejm.org/doi/full/10.1056/NEJMc2518178"},
-    {"org": "CIDRAP", "title": "WHO H5N1 fatal case update", "url": "https://www.cidrap.umn.edu/avian-influenza-bird-flu/who-reports-h5n1-death-among-variant-zoonotic-flu-cases-seen-year"},
     {"org": "PBS", "title": "PBS NewsHour — epidemiologist explainer", "url": "https://www.pbs.org/newshour/health/medical-epidemiologist-explains-what-to-know-about-the-cruise-ship-hantavirus-outbreak"},
-    {"org": "CNN", "title": "CNN live coverage", "url": "https://www.cnn.com/2026/05/10/health/live-news/hantavirus-cruise-outbreak"},
-    {"org": "CNBC", "title": "CNBC business angle", "url": "https://www.cnbc.com/2026/05/09/hantavirus-cruise-ship-mv-hondius-travel-health-risks.html"},
-    {"org": "Nature", "title": "Nature — uncertainty about spread", "url": "https://www.nature.com/articles/d41586-026-01512-w"},
     {"org": "Wikipedia", "title": "MV Hondius hantavirus outbreak", "url": "https://en.wikipedia.org/wiki/MV_Hondius_hantavirus_outbreak"}
   ]
 }

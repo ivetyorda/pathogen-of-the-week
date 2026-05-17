@@ -82,7 +82,7 @@ def render_card(p: dict) -> str:
 
 def render_html(data: dict) -> str:
     week_label = (
-        f"ISO Week {data['iso_week']} · "
+        f"Week {data['iso_week']} · "
         f"Mon {data['week_start'][-2:].lstrip('0')} – "
         f"Sun {data['week_end'][-2:].lstrip('0')} "
         f"{_month_name(data['week_end'])} {data['iso_year']}"
@@ -264,7 +264,7 @@ footer.page-foot a {{ color: #0f172a; text-decoration: none; }}
 
   <footer class="page-foot">
     <span>Full sources, interactive radar, expanded details → <a href="{escape(data.get('site_url',''))}">{escape(data.get('site_url',''))}</a></span>
-    <span>ISO Week {data['iso_week']} · {data['iso_year']} · auto-regenerated every Monday</span>
+    <span>Week {data['iso_week']} · {data['iso_year']} · auto-regenerated every Sunday</span>
   </footer>
 </body></html>
 """
