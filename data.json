@@ -9,11 +9,7 @@
   "headline": {
     "title": "This week at a glance",
     "summary": "A new Public Health Emergency of International Concern has been declared. The briefing is restructured around it.",
-<<<<<<< HEAD
-    "takeaway": "WHO declared the Ebola Bundibugyo outbreak in DRC's Ituri Province and Uganda a PHEIC on 16 May 2026 — 10 lab-confirmed and ~246 suspected cases, ~80 suspected deaths, with cross-border spread to Kampala via two travellers. There are no approved BVD-specific therapeutics or vaccines and historical Bundibugyo CFR runs 25–35%. The Andes hantavirus MV Hondius cluster has grown to 12 cases (9 confirmed, 2 probable, 1 inconclusive) and docks at Rotterdam on 18 May, but global risk remains assessed as low. Mpox clade Ib is the smoldering background story with continued community transmission across five European countries. H5N1 has been moved off the active list for this week."
-=======
     "takeaway": "WHO declared the Ebola Bundibugyo outbreak in DRC's Ituri Province and Uganda a PHEIC on 16 May 2026 — 10 lab-confirmed and ~246 suspected cases, ~80 suspected deaths, with cross-border spread to Kampala via two travellers. This is only the third recorded outbreak of Bundibugyo ebolavirus (after Uganda 2007 and DRC 2012). There are no approved BVD-specific therapeutics or vaccines; historical BVD case-fatality has been ~25–35%. The Andes hantavirus MV Hondius cluster has grown to 12 cases (9 confirmed, 2 probable, 1 inconclusive) and docks at Rotterdam on 18 May, but global risk remains assessed as low. Mpox clade Ib is the smoldering background story with continued community transmission across five European countries. H5N1 has been moved off the active list for this week."
->>>>>>> b3dfb92 (Update data.json)
   },
   "pathogens": [
     {
@@ -27,17 +23,10 @@
       "stats": [
         {"num": "10", "label": "Lab-confirmed cases", "tone": "crit"},
         {"num": "~80", "label": "Suspected deaths", "tone": "crit"},
-<<<<<<< HEAD
-        {"num": "25–35%", "label": "Historical BVD CFR", "tone": "warn"}
-      ],
-      "scores": {"severity": 9.5, "novelty": 8.5, "attention": 9.5, "policy": 9.5, "pandemic": 4.5},
-      "why": "WHO declared this outbreak a Public Health Emergency of International Concern on 16 May 2026. It is only the third recorded outbreak of Bundibugyo ebolavirus — a rare ebolavirus species for which no approved therapeutics or vaccines exist (the Ervebo vaccine and approved monoclonal antibodies target Zaire ebolavirus). Two of the four prior outbreaks have been confined to Uganda; this is the first known emergence in DRC's Ituri Province, and the first time BVD has spread internationally during an active outbreak.",
-=======
         {"num": "~25–35%", "label": "Historical BVD CFR", "tone": "warn"}
       ],
       "scores": {"severity": 9.5, "novelty": 8.5, "attention": 9.5, "policy": 9.5, "pandemic": 4.5},
       "why": "WHO declared this outbreak a Public Health Emergency of International Concern on 16 May 2026. It is only the third recorded outbreak of Bundibugyo ebolavirus — a rare ebolavirus species for which no approved therapeutics or vaccines exist (the Ervebo vaccine and approved monoclonal antibodies target Zaire ebolavirus). The two prior BVD outbreaks were confined within national borders: Uganda's Bundibugyo District in 2007 (149 cases, 37 deaths, ~25% CFR) and DRC's Isiro health zone in 2012 (38 confirmed cases, 13 deaths, ~34% CFR). This is the first known emergence of BVD in DRC's Ituri Province, and the first time the species has spread internationally during an active outbreak.",
->>>>>>> b3dfb92 (Update data.json)
       "policy_bullets": [
         "Activate cross-border surveillance and exit screening between DRC and Uganda, Rwanda, South Sudan and CAR; brief national EOCs on BVD-specific clinical case definitions.",
         "Stand up isolation and ETC capacity in Bunia and Kampala; pre-position PPE and rapid PCR panels capable of distinguishing BVD from Zaire ebolavirus.",
