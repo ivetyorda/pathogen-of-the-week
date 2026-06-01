@@ -1,15 +1,15 @@
 {
   "schema_version": 1,
   "iso_year": 2026,
-  "iso_week": 22,
-  "week_start": "2026-05-25",
-  "week_end": "2026-05-31",
-  "produced_on": "2026-05-25",
+  "iso_week": 23,
+  "week_start": "2026-06-01",
+  "week_end": "2026-06-07",
+  "produced_on": "2026-06-01",
   "site_url": "https://ivetyorda.github.io/pathogen-of-the-week/",
   "headline": {
     "title": "This week at a glance",
-    "summary": "The Ebola Bundibugyo outbreak continues to accelerate in DRC and Uganda. As of 24 May, cases exceed 650 suspected with 160+ deaths confirmed and probable. CDC's Title 42 entry restrictions now in effect. The MV Hondius cruise-ship hantavirus cluster remains under international contact-tracing. Mpox clade Ib sustains endemic transmission across EU/EEA with documented vaccination gaps.",
-    "takeaway": "The Bundibugyo ebolavirus remains the dominant global public health emergency. As of May 24, DRC and Uganda have reported 650+ suspected cases with 160+ confirmed and probable deaths. The outbreak shows no sign of slowing: 26 new confirmed cases and 143 new suspected cases were identified in the 24–48 hours preceding the 19 May briefing, and a US physician working in Bunia was medevaced to Germany after testing positive. The first American case has galvanized US entry restrictions — CDC invoked Title 42 for the first time since COVID-19 on 18 May, suspending non-US national entry from DRC, Uganda and South Sudan for 30 days. No approved Bundibugyo-specific therapeutics or vaccines exist; Africa CDC and WHO are convening urgent expert review for emergency-use trials of investigational monoclonal antibodies, remdesivir, and pre-clinical vaccine candidates. The MV Hondius Andes hantavirus cluster (10 confirmed/probable, 3 deaths) reached Rotterdam on 18 May; the contact-tracing window spans 19 countries across six weeks. No symptomatic disembarkees were identified on arrival. Mpox clade Ib continues endemic circulation in Europe — 80 clade I cases in 10 EU/EEA countries in March, with only 23% of reported cases fully vaccinated. This week's focus: urgently establish emergency investigational countermeasures (ICM) protocols for Bundibugyo; coordinate international contact-tracing and clinical-alert pathways for hantavirus; sustain targeted vaccination for at-risk MSM populations for mpox."
+    "summary": "The Ebola Bundibugyo PHEIC enters a stabilisation-and-countermeasures phase: 282 confirmed cases and 42 confirmed deaths, with candidate therapeutics now prioritised for emergency trials. US measles has reached 1,983 cases — elimination status formally at risk. H5N1 avian influenza records a third unknown-exposure case among US humans, heightening pandemic-preparedness concern.",
+    "takeaway": "The <b>Bundibugyo ebolavirus</b> outbreak in DRC and Uganda enters a critical transition from emergency response to countermeasure deployment. As of 31&nbsp;May, DRC reports <b>282 confirmed cases</b> across 17 health zones in Ituri, North Kivu and South Kivu, plus 220 suspected cases under investigation, with <b>42 confirmed deaths</b>. Five people have now recovered — including four nurses — a first positive signal. WHO and Africa CDC have prioritised three candidate therapeutics for emergency-use trials: the monoclonal antibodies <b>MBP 134 and maftivimab</b>, and the antiviral <b>remdesivir</b>. The oral antiviral <b>obeldesivir</b> is being prioritised for post-exposure prophylaxis, and two candidate BVD vaccines have been identified for clinical evaluation. Cross-border risk remains elevated: Uganda has 9 confirmed cases and 1 death, all linked to DRC travel. US measles surpassed <b>1,983 confirmed cases</b> as of 28&nbsp;May — across 40 US jurisdictions, 30 active outbreaks — putting elimination status formally at risk for the first time since 2000. H5N1 avian influenza has now recorded <b>3 US human cases with unknown animal-exposure source</b> out of 71 total, raising concern about gaps in surveillance and possible cryptic spread."
   },
   "pathogens": [
     {
@@ -18,147 +18,162 @@
       "tag_label": "Acute event · Lead story · PHEIC",
       "is_lead": true,
       "name": "Ebola Bundibugyo",
-      "scientific_name": "Bundibugyo ebolavirus (BVD) — DRC Ituri outbreak with cross-border spread to Uganda and first American case",
-      "location": "DRC Ituri Province (Bunia, Rwampara, Mongbwalu) · Kampala, Uganda · medevac of US doctor to Germany",
+      "scientific_name": "Bundibugyo ebolavirus (BVD) — DRC & Uganda PHEIC · countermeasure trials underway",
+      "location": "DRC: Ituri (264 confirmed), North Kivu (15), South Kivu (3) · Uganda: 9 confirmed, 1 death",
       "stats": [
-        {"num": "650+", "label": "Suspected cases (DRC + Uganda as of 24 May)", "tone": "crit"},
-        {"num": "160+", "label": "Deaths (confirmed + probable)", "tone": "crit"},
-        {"num": "64", "label": "Laboratory-confirmed cases", "tone": "crit"}
+        {"num": "282", "label": "Confirmed cases (DRC + Uganda, 31 May)", "tone": "crit"},
+        {"num": "42", "label": "Confirmed deaths", "tone": "crit"},
+        {"num": "5", "label": "Recoveries — first positive signal", "tone": "warn"}
       ],
-      "scores": {"severity": 9.8, "novelty": 8.5, "attention": 10.0, "policy": 10.0, "pandemic": 5.0},
-      "why": "The PHEIC declared on 16 May has escalated sharply. In nine days (15–24 May), suspected cases surged from ~246 to 650+, deaths nearly doubled from 80 to 160+, and confirmed cases more than doubled (34 → 64). The US Title 42 entry suspension on 18 May marks the first deployment of this authority since COVID-19 and signals maximal alarm. Dr. Peter Stafford, a US physician working in Bunia since 2023, was confirmed positive on 18 May and medevaced to Germany with six high-risk-contact Americans. The same day the CDC confirmed an independent second American case in Uganda. Critical gaps remain: no approved Bundibugyo-specific therapeutics or vaccines, weak contact-tracing in insecurity-affected zones, and four healthcare worker deaths in 72 hours at Mongbwalu General Referral Hospital signal catastrophic IPC failures. WHO and Africa CDC are convening R&D Blueprint expert review of candidate monoclonal antibodies, remdesivir, and BVD vaccine candidates for emergency-use clinical trials.",
+      "scores": {"severity": 9.5, "novelty": 8.0, "attention": 9.0, "policy": 10.0, "pandemic": 4.5},
+      "why": "The outbreak has shifted from explosive growth into a high-intensity stabilisation phase. As of 31 May 2026, DRC reports 282 confirmed cases in 17 health zones across Ituri (264), North Kivu (15) and South Kivu (3), plus 220 suspected cases under investigation. Uganda has 9 confirmed cases and 1 death. Total confirmed deaths stand at 42. Critically, 5 people have recovered — including 4 nurses — a first clear evidence that survival with supportive care is achievable. WHO and Africa CDC R&D Blueprint have shortlisted candidate countermeasures for emergency-use clinical trials: monoclonal antibodies MBP 134 and maftivimab, remdesivir (IV/oral), obeldesivir (oral; targeted for post-exposure prophylaxis), and two BVD vaccine candidates. The Title 42 entry restriction (DRC, Uganda, South Sudan) remains in force. Nosocomial transmission in health-care settings continues to be a key driver; IPC training and PPE supply remain critical gaps.",
       "policy_bullets": [
-        "Activate cross-border surveillance and exit screening between DRC, Uganda, Rwanda, South Sudan, CAR and Kenya; brief national EOCs on BVD-specific clinical case definitions and rapid PCR panels that distinguish BVD from Zaire ebolavirus.",
-        "Establish emergency-use clinical-trial protocols in DRC and Uganda for investigational BVD monoclonal antibodies, remdesivir (IV and oral), and pre-clinical BVD vaccine candidates; existing Zaire-targeted countermeasures are not assumed cross-protective.",
-        "Scale isolation and ETC capacity in Bunia, Mongbwalu and Kampala; pre-position PPE and surge medevac air-ambulance contracts; brief receiving hospitals (Hamburg, London Royal Free, NIH-Bethesda, others) on BVD-specific case management and staff protections.",
-        "Communicate early and clearly: BVD spreads through direct contact with body fluids of symptomatic patients, not through airborne or casual contact. Counter stigma against travellers and Congolese diaspora; emphasize Title 42 as a screening measure, not a trade ban.",
-        "Stand up molecular epidemiology team to sequence isolates from Ituri, Nord-Kivu, Kampala and any exported cases; identify transmission chains and zoonotic reservoir(s) to guide containment."
+        "Accelerate WHO/Africa CDC R&D Blueprint emergency-use clinical-trial protocols for MBP 134, maftivimab and remdesivir in DRC and Uganda; coordinate regulatory fast-track pathways so enrolment can begin within days, not weeks.",
+        "Operationalise obeldesivir post-exposure prophylaxis for high-risk healthcare contacts; data from the five confirmed recoveries should inform supportive-care protocols for treatment centres in Bunia, Mongbwalu and Kampala.",
+        "Maintain cross-border exit screening between DRC, Uganda, Rwanda, South Sudan, CAR and Kenya; sustain Title 42 screening at US ports of entry while avoiding broad travel-restriction language that depresses voluntary healthcare-seeking.",
+        "Prioritise IPC surge: 17 affected health zones, several with ongoing nosocomial amplification; emergency PPE pre-positioning and rapid IPC training for frontline health workers must be resourced separately from case-isolation funding."
       ],
       "details": {
         "First notified": "5 May 2026 (DRC MoH to WHO, unknown illness) · WHO DON 2026-DON602 published 14 May",
-        "Pathogen confirmed": "15 May 2026 — Bundibugyo ebolavirus on 8 samples (INRB / WHO ref lab)",
+        "Pathogen confirmed": "15 May 2026 — Bundibugyo ebolavirus (INRB / WHO ref lab)",
         "PHEIC declared": "16 May 2026 (WHO IHR Emergency Committee)",
-        "US Title 42 order": "18 May 2026 — 30-day suspension of non-US national entry if in DRC/Uganda/South Sudan in past 21 days",
-        "US case #1": "18 May 2026 — Dr Peter Stafford (Bunia, since 2023); medevac to Germany with 6 high-risk-contact Americans",
-        "US case #2": "18 May 2026 — Independent case in Uganda confirmed by CDC",
-        "DRC + Uganda total (24 May)": "650+ suspected · 160+ deaths (confirmed + probable) · 64 lab-confirmed · accelerating case counts",
-        "Index location": "Mongbwalu Health Zone, Ituri Province, DRC; spread to Bunia and Rwampara health zones",
+        "Cases as of 31 May": "282 confirmed · 220 suspected · 42 confirmed deaths · 5 recoveries (4 nurses + 1)",
+        "Geographic spread (DRC)": "17 health zones: Ituri 264, North Kivu 15, South Kivu 3",
+        "Uganda": "9 confirmed, 1 death — all travel-linked from DRC",
+        "Prioritised therapeutics": "MBP 134 (mAb), maftivimab (mAb), remdesivir (IV/oral antiviral)",
+        "Prioritised prophylaxis": "Obeldesivir (oral antiviral, post-exposure prophylaxis)",
+        "Candidate vaccines": "Two BVD-specific candidates identified for emergency-use clinical evaluation",
+        "US restrictions": "Title 42 — 30-day suspension from 18 May 2026",
         "Pathogen": "Bundibugyo ebolavirus (Filoviridae, Orthoebolavirus bundibugyoense)",
-        "Transmission": "Direct contact with blood / body fluids of symptomatic patients; nosocomial amplification a key risk (healthcare worker deaths reported)",
+        "Transmission": "Direct contact with blood / body fluids of symptomatic patients; nosocomial amplification ongoing",
         "Incubation": "2–21 days (median ~8–10 days)",
-        "Clinical": "Fever, malaise, GI symptoms → haemorrhagic phase, multi-organ failure",
-        "CFR (historical)": "~25–35% (some sources up to 50%) — Uganda 2007: 37/149 (25%); DRC Isiro 2012: 13/38 (34%)",
-        "Treatment": "Supportive (fluid resuscitation, oxygen); no approved BVD-specific therapeutics. Investigational mAbs and remdesivir (lab data suggest better activity against BVD than Zaire) under WHO/Africa CDC review for emergency-use trials.",
-        "Vaccines": "None approved against BVD; rVSV-ZEBOV (Ervebo) is Zaire-specific. Several BVD vaccine candidates in pre-clinical / Phase I; emergency-use clinical-trial pathways are priority."
+        "CFR (historical)": "~25–35% — Uganda 2007: 25%; DRC Isiro 2012: 34%",
+        "Treatment": "Supportive; investigational mAbs and remdesivir under WHO/Africa CDC review for emergency-use trials"
       },
       "sources": [
         {"label": "WHO DON 2026-DON602", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON602"},
         {"label": "WHO PHEIC declaration", "url": "https://www.who.int/news/item/17-05-2026-epidemic-of-ebola-disease-in-the-democratic-republic-of-the-congo-and-uganda-determined-a-public-health-emergency-of-international-concern"},
         {"label": "CDC Ebola situation summary", "url": "https://www.cdc.gov/ebola/situation-summary/index.html"},
-        {"label": "CDC Title 42 order", "url": "https://www.cdc.gov/ebola/situation-summary/title-42-order.html"},
         {"label": "CDC HAN-530 advisory", "url": "https://www.cdc.gov/han/php/notices/han00530.html"},
-        {"label": "Reuters — Death toll accelerates", "url": "https://www.reuters.com/world/africa/deaths-from-rare-ebola-virus-reach-160-uganda-congo-drc-2026-05-24/"},
-        {"label": "WHO chief raises alarm", "url": "https://www.npr.org/2026/05/20/g-s1-122971/who-chief-concerned-over-scale-and-speed-of-ebola-outbreak"},
-        {"label": "Nature — Bundibugyo biology Q&A", "url": "https://www.nature.com/articles/d41586-026-01426-8"}
+        {"label": "UN News — 4 nurses discharged", "url": "https://news.un.org/en/story/2026/06/1167613"},
+        {"label": "ECDC Ebola outbreak page", "url": "https://www.ecdc.europa.eu/en/ebola-virus-disease-outbreak-democratic-republic-congo-and-uganda"},
+        {"label": "NICD situational reports", "url": "https://www.nicd.ac.za/ebola-bundibugyo-virus-outbreak-situation-report-drc-uganda/"},
+        {"label": "Medscape — new defences on the horizon", "url": "https://www.medscape.com/viewarticle/bundibugyo-ebola-update-are-new-defenses-horizon-2026a1000i57"},
+        {"label": "ebola.fyi tracker", "url": "https://ebola.fyi/"}
       ]
     },
     {
-      "id": "hanta",
-      "tag": "acute",
-      "tag_label": "Acute event · Contact-tracing phase",
-      "is_lead": false,
-      "name": "Andes hantavirus",
-      "scientific_name": "Orthohantavirus andesense (ANDV) — MV Hondius cruise-ship cluster",
-      "location": "MV Hondius docked at Rotterdam 18 May 2026 · contacts across 19 countries",
-      "stats": [
-        {"num": "10", "label": "Cases (8 confirmed, 2 probable)", "tone": "crit"},
-        {"num": "3", "label": "Deaths", "tone": "crit"},
-        {"num": "19", "label": "Countries with potential contacts", "tone": "warn"}
-      ],
-      "scores": {"severity": 8.3, "novelty": 6.0, "attention": 6.5, "policy": 7.0, "pandemic": 2.5},
-      "why": "The MV Hondius docked at Rotterdam on 18 May 2026. The Dutch RIVM reported no symptomatic disembarking; the remaining 25 crew and 2 medical staff entered quarantine and are undergoing clinical monitoring. Andes virus is the only hantavirus with documented human-to-human transmission, and the incubation window extends to ~6 weeks. Repatriated passengers and crew are being followed in 19 home countries. WHO still assesses global public-health risk as low, but operational burden on border health services, receiving countries' contact-tracing systems, and international clinical-alert pathways is high. No new symptomatic cases have been reported among disembarking personnel or early contacts as of 24 May.",
-      "policy_bullets": [
-        "Sustain cross-border contact tracing for repatriated passengers and crew across 19 countries; incubation window extends up to ~6 weeks; median onset 14–17 days.",
-        "Support the Dutch RIVM disembarkation and disinfection protocol; provide secondary clinical-alert pathways for any contact developing fever, cough or respiratory symptoms.",
-        "Codify cruise-line protocols: rodent-exclusion, onboard isolation, cabin decontamination, passenger-screening for exposure history on embarkation.",
-        "Ensure domestic clinical-alert pathways are in place — many physicians have not seen hantavirus pulmonary syndrome; distribute clinical recognition materials to respiratory and ICU clinicians."
-      ],
-      "details": {
-        "First notified": "2 May 2026 (WHO) · WHO DON 2026-DON599 / DON601",
-        "Docked": "18 May 2026, Rotterdam (Netherlands)",
-        "Status on disembarkation": "RIVM: none of the people coming off the ship were symptomatic as of 18 May",
-        "Pathogen": "Andes orthohantavirus (ANDV)",
-        "Itinerary": "Departed Ushuaia (Argentina) 1 April 2026; ports of call included Antarctica, South Georgia Island, Tristan da Cunha, Saint Helena, Ascension",
-        "Passengers & crew": "147 people (86 passengers + 61 crew) from 23 countries",
-        "Transmission": "Rodent reservoir (long-tailed pygmy rice rat); rare human-to-human via close contact",
-        "Incubation": "~1–6 weeks (median ~14–17 days)",
-        "Clinical": "Fever, GI symptoms → ARDS / cardiopulmonary shock",
-        "CFR (Andes, historical)": "~25–40% in Latin-American outbreaks",
-        "Treatment": "Supportive (ICU, ECMO); no licensed antiviral or vaccine",
-        "US risk": "Extremely low — no confirmed US cases linked to the outbreak as of 24 May 2026"
-      },
-      "sources": [
-        {"label": "WHO DON 2026-DON599", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON599"},
-        {"label": "WHO DON 2026-DON601", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON601"},
-        {"label": "CDC HAN-528 (cruise-ship cluster)", "url": "https://www.cdc.gov/han/php/notices/han00528.html"},
-        {"label": "ECDC Andes hantavirus update", "url": "https://www.ecdc.europa.eu/en/infectious-disease-topics/hantavirus-infection/surveillance-and-updates/andes-hantavirus-outbreak"},
-        {"label": "Reuters — Ship docks in Netherlands", "url": "https://www.reuters.com/world/europe/hantavirus-infected-cruise-ship-docks-rotterdam-2026-05-18/"},
-        {"label": "ECDC CDTR Week 20 (9–15 May 2026)", "url": "https://www.ecdc.europa.eu/en/publications-data/communicable-disease-threats-report-9-13-may-2026-week-20"}
-      ]
-    },
-    {
-      "id": "mpox",
+      "id": "measles",
       "tag": "smolder",
-      "tag_label": "Smoldering · PHEIC",
+      "tag_label": "Smoldering · Elimination status at risk",
       "is_lead": false,
-      "name": "Mpox (clade Ib)",
-      "scientific_name": "Monkeypox virus, clade Ib",
-      "location": "DRC, Madagascar, Uganda, Burundi, Kenya · sustained clade I transmission across ≥10 EU/EEA countries",
+      "name": "Measles (USA)",
+      "scientific_name": "Measles morbillivirus — largest US outbreak since 2019; elimination status formally at risk",
+      "location": "40 US jurisdictions · 30 active outbreaks · Utah, Texas, Ohio, California leading",
       "stats": [
-        {"num": "80", "label": "Clade I cases · EU/EEA · March 2026 (10 countries)", "tone": "warn"},
-        {"num": "247", "label": "Clade I cases · EU/EEA · Jan–Mar cumulative", "tone": "warn"},
-        {"num": "77%", "label": "Unvaccinated or partially vaccinated among clade I cases", "tone": "warn"}
+        {"num": "1,983", "label": "Confirmed US cases in 2026 (as of 28 May)", "tone": "crit"},
+        {"num": "30", "label": "Active outbreaks in 2026", "tone": "crit"},
+        {"num": "93%", "label": "Cases that are outbreak-associated", "tone": "warn"}
       ],
-      "scores": {"severity": 5.3, "novelty": 3.8, "attention": 4.3, "policy": 6.8, "pandemic": 4.2},
-      "why": "ECDC's monthly mpox surveillance shows sustained clade I transmission in Europe, with 80 clade I cases reported across 10 EU/EEA countries in March 2026 (Spain leading with 23 cases), 78 in February and 89 in January — demonstrating persistent endemic circulation at moderate levels. Just 23% of reported clade I cases had completed a two-dose JYNNEOS / MVA-BN course, indicating persistent vaccination gaps despite two years of availability. Risk to MSM remains moderate; risk to general population remains low. The Bundibugyo ebolavirus outbreak and hantavirus cruise-ship cluster add operational burden on national health authorities in DRC and cross-border zones. A novel clade Ib/IIb recombinant remains flagged (WHO DON 2026-DON595) but not detected in recent surveillance.",
+      "scores": {"severity": 4.5, "novelty": 3.0, "attention": 7.0, "policy": 9.0, "pandemic": 3.5},
+      "why": "With 1,983 confirmed cases across 40 US jurisdictions as of 28 May 2026, the US is tracking closely to its full-year 2025 total of 2,288 — with seven months of 2026 remaining. Thirty new outbreaks have been identified in 2026 alone (93% of cases are outbreak-associated), and epidemiologists have publicly flagged that elimination status — held since 2000 — is formally at risk. Nine of the 1,983 cases are international visitors, confirming ongoing importation risk. The core driver is declining MMR vaccination coverage in select communities and states. A spike in post-outbreak vaccination rates has been documented, but structural coverage gaps in unvaccinated communities remain.",
       "policy_bullets": [
-        "Sustain targeted JYNNEOS / MVA-BN vaccine availability for at-risk MSM groups; address coverage gap — 77% of reported clade I cases were unvaccinated or partially vaccinated.",
-        "Maintain non-stigmatizing messaging through community organizations and sexual-health clinics; avoid travel restrictions for clade Ib.",
-        "Fund continued genomic surveillance — clade I/II recombinants are emerging; ECDC's new monthly reporting will track variants in real time.",
-        "Review reimbursement codes for outpatient tecovirimat where stockpiles permit; assess clinical efficacy data from ongoing observational cohorts."
+        "Immediately assess MMR vaccination coverage at county level in all 40 affected jurisdictions and identify sub-80% coverage pockets — those are the outbreak accelerants that must be addressed with targeted catch-up campaigns.",
+        "Activate state emergency vaccination authority where outbreaks are active: school-exemption review, mobile vaccination teams, and community partnership with faith and school networks in hesitant communities.",
+        "Coordinate with CDC, APHA and ASTHO to formally communicate the elimination-status risk threshold — policymakers need to understand that the US could lose WHO measles-elimination certification if current trends continue.",
+        "Fund real-time outbreak surveillance: 93% outbreak-association rate means most cases are preventable with faster ring-vaccination response at outbreak detection."
       ],
       "details": {
-        "PHEIC status": "Active (re-declared Aug 2024; still in force)",
-        "EU/EEA new (March 2026)": "80 cases · 10 countries (Spain 23, Germany 18, Netherlands 12, Italy 11, Belgium 8, others lower)",
-        "EU/EEA Jan–Mar 2026": "247 clade I cases cumulative",
-        "Vaccine coverage among cases": "23% clade I had received 2 doses MVA-BN; 77% unvaccinated or partially vaccinated",
-        "Severity": "Generally mild in EU/EEA — no deaths reported in clade I cases",
-        "Driver outside Africa": "Sexual contact (vast majority adult MSM)",
-        "Vaccines": "JYNNEOS / MVA-BN (Bavarian Nordic) — limited supply in some markets; two-dose series recommended",
-        "Antiviral": "Tecovirimat — clinical efficacy mixed in trials; outpatient access expanding",
-        "Recombinant flag": "Clade Ib/IIb recombinant (WHO DON 2026-DON595) — genomic surveillance ongoing"
+        "Cases as of 28 May 2026": "1,983 confirmed (40 jurisdictions + 9 international visitors)",
+        "Full-year 2025 total": "2,288 — 2026 on pace to exceed at current trajectory",
+        "2026 outbreaks": "30 active; 1,847 of 1,983 (93%) outbreak-associated",
+        "Elimination status": "Formally at risk — WHO certification requires sustained interruption of endemic transmission",
+        "Pathogen": "Measles morbillivirus (Paramyxoviridae); R₀ ~12–18",
+        "Transmission": "Airborne; one of the most transmissible human pathogens known",
+        "Clinical": "Fever, cough, coryza, conjunctivitis, rash; complications include pneumonia, encephalitis, SSPE",
+        "CFR (US, typical)": "~0.1–0.2% overall; higher in malnourished / immunocompromised",
+        "Vaccine": "MMR (two-dose series); ~97% effective",
+        "Key driver": "Declining MMR coverage in select US communities; school exemptions; vaccine hesitancy"
       },
       "sources": [
-        {"label": "WHO mpox hub", "url": "https://www.who.int/emergencies/situations/mpox-outbreak"},
-        {"label": "ECDC monthly mpox surveillance", "url": "https://mpox-monthly.ecdc.europa.eu/"},
-        {"label": "ECDC threat assessment — autochthonous clade Ib", "url": "https://www.ecdc.europa.eu/en/publications-data/threat-assessment-brief-detection-autochthonous-transmission-monkeypox-virus"},
-        {"label": "WHO mpox sit-rep #65", "url": "https://www.who.int/publications/m/item/multi-country-outbreak-of-mpox--external-situation-report--65---30-april-2026"},
-        {"label": "WHO DON 2026-DON595 (recombinant)", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON595"}
+        {"label": "CDC Measles cases and outbreaks", "url": "https://www.cdc.gov/measles/data-research/index.html"},
+        {"label": "US News — 1,900 cases, elimination at risk", "url": "https://www.usnews.com/news/health-news/articles/tracking-the-2026-u-s-measles-outbreaks"},
+        {"label": "CIDRAP — US total approaches 1,300", "url": "https://www.cidrap.umn.edu/measles/us-measles-total-approaches-1300-infections"},
+        {"label": "Healthline — Utah, other states surge", "url": "https://www.healthline.com/health-news/us-measles-outbreak-2026"},
+        {"label": "CNN — South Carolina outbreak over", "url": "https://www.cnn.com/2026/04/27/health/south-carolina-measles-outbreak-over"},
+        {"label": "NBC News measles tracker map", "url": "https://www.nbcnews.com/data-graphics/track-measles-outbreak-cases-us-map-rcna198932"},
+        {"label": "Dr Randal Olson — elimination floor broken", "url": "https://www.randalolson.com/2026/05/13/us-measles-elimination-status-at-risk/"},
+        {"label": "JHU IVAC — US measles tracker", "url": "https://publichealth.jhu.edu/ivac/resources/us-measles-tracker"}
+      ]
+    },
+    {
+      "id": "h5n1",
+      "tag": "watch",
+      "tag_label": "Watch · Pandemic potential",
+      "is_lead": false,
+      "name": "H5N1 Avian Influenza",
+      "scientific_name": "Influenza A(H5N1) — 71 US human cases; 3 unknown-exposure; novel H5N5 human case",
+      "location": "USA (dairy cows, poultry workers) · Bangladesh (fatal paediatric case) · global wild-bird reservoir",
+      "stats": [
+        {"num": "71", "label": "US human cases since 2024 (as of 27 May)", "tone": "warn"},
+        {"num": "3", "label": "Cases with unknown animal-exposure source", "tone": "crit"},
+        {"num": "2", "label": "US deaths", "tone": "crit"}
+      ],
+      "scores": {"severity": 7.0, "novelty": 5.5, "attention": 5.5, "policy": 6.5, "pandemic": 9.0},
+      "why": "The US multistate H5N1 outbreak in dairy cows and poultry continues to generate sporadic human cases. As of 27 May 2026, 71 US human infections have been confirmed since 2024, with 2 deaths. The most concerning signal this week: 3 of those 71 cases have no identified animal-exposure source — raising the possibility of missed exposures, environmental exposure, or limited undetected human-to-human transmission. No sustained H2H spread has been documented. Globally, WHO tracked 13 avian and swine influenza cases in humans in Q1 2026, including a fatal H5N1 case in a child in Bangladesh. A NEJM report documents the first confirmed human infection with H5N5 — a novel variant requiring close monitoring. Scientists have publicly warned that H5N1 could spark a human pandemic in 2026.",
+      "policy_bullets": [
+        "Urgently investigate all 3 unknown-exposure US H5N1 cases with full environmental and contact-tracing workups; any evidence of human-to-human transmission must trigger immediate escalation to pandemic preparedness activation.",
+        "Strengthen surveillance in dairy-farm workers: serological screening beyond symptomatic testing — asymptomatic H5N1 cases are likely being missed given the unknown-exposure detections.",
+        "Accelerate H5N1 pandemic vaccine candidate production and pre-positioning; WHO and HHS should review current CVV stock against circulating H5 clade 2.3.4.4b strains and update if antigenic drift is detected.",
+        "Monitor H5N5 (novel variant, first human case NEJM 2026) — ensure national reference labs can distinguish H5 subtypes; add to WHO global surveillance net."
+      ],
+      "details": {
+        "US cases (as of 27 May 2026)": "71 human infections (2024–2026); 2 deaths; 3 unknown-exposure source",
+        "US states affected": "California, Colorado, Iowa, Louisiana, Michigan, Missouri, Nevada, Ohio, Oregon, Texas, Washington, Wisconsin, Wyoming",
+        "Global Q1 2026": "13 avian/swine influenza cases in humans (WHO); includes fatal H5N1 in child, Bangladesh",
+        "Novel variant": "H5N5 — first confirmed human infection (NEJM 2026)",
+        "H2H transmission": "None sustained as of reporting date",
+        "Risk assessment (CDC)": "Low for general US public; moderate for workers with animal exposure",
+        "Pathogen": "Influenza A(H5N1) clade 2.3.4.4b — highly pathogenic avian influenza (HPAI)",
+        "Reservoir": "Wild birds (global); US dairy cows (novel mammalian reservoir, 2024–)",
+        "Clinical": "Pneumonia, ARDS, multi-organ failure; historical CFR ~60% globally (milder in US dairy-worker cases)",
+        "Vaccines": "No licensed H5N1 vaccine for general public; candidates in US strategic stockpile",
+        "Antivirals": "Oseltamivir effective if started early; US SNS stockpile maintained"
+      },
+      "sources": [
+        {"label": "CDC A(H5) bird flu situation", "url": "https://www.cdc.gov/bird-flu/situation-summary/index.html"},
+        {"label": "CDC H5N1 epi curve (human cases)", "url": "https://www.cdc.gov/bird-flu/php/surveillance/chart-epi-curve-ah5n1.html"},
+        {"label": "CIDRAP — WHO reports H5N1 death", "url": "https://www.cidrap.umn.edu/avian-influenza-bird-flu/who-reports-h5n1-death-among-variant-zoonotic-flu-cases-seen-year"},
+        {"label": "CIDRAP — H5N1 can be asymptomatic", "url": "https://www.cidrap.umn.edu/avian-influenza-bird-flu/review-human-h5n1-avian-flu-cases-can-be-asymptomatic-and-virus-likely-spreads-among-people"},
+        {"label": "NEJM — Human H5N5 infection (novel)", "url": "https://www.nejm.org/doi/full/10.1056/NEJMc2518178"},
+        {"label": "BBC Science Focus — could spark pandemic 2026", "url": "https://www.sciencefocus.com/news/bird-flu-2026-analysis"},
+        {"label": "Wikipedia — 2020–2026 H5N1 outbreak", "url": "https://en.wikipedia.org/wiki/2020%E2%80%932026_H5N1_outbreak"}
       ]
     }
   ],
   "all_sources": [
     {"org": "WHO", "title": "DON 2026-DON602 — Ebola Bundibugyo, DRC & Uganda", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON602"},
     {"org": "WHO", "title": "PHEIC declaration (17 May 2026)", "url": "https://www.who.int/news/item/17-05-2026-epidemic-of-ebola-disease-in-the-democratic-republic-of-the-congo-and-uganda-determined-a-public-health-emergency-of-international-concern"},
-    {"org": "CDC", "title": "Ebola Disease: Current Situation (updated 16 May)", "url": "https://www.cdc.gov/ebola/situation-summary/index.html"},
-    {"org": "CDC", "title": "HAN-530: Ebola Disease Outbreak Advisory", "url": "https://www.cdc.gov/han/php/notices/han00530.html"},
-    {"org": "CDC", "title": "Title 42 statement (entry restrictions)", "url": "https://www.cdc.gov/ebola/situation-summary/title-42-order.html"},
-    {"org": "WHO", "title": "DON 2026-DON599 — Hantavirus (initial)", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON599"},
-    {"org": "WHO", "title": "DON 2026-DON601 — Hantavirus (update)", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON601"},
-    {"org": "CDC", "title": "HAN-528 — Cruise-ship cluster advisory", "url": "https://www.cdc.gov/han/php/notices/han00528.html"},
-    {"org": "ECDC", "title": "Andes hantavirus outbreak page", "url": "https://www.ecdc.europa.eu/en/infectious-disease-topics/hantavirus-infection/surveillance-and-updates/andes-hantavirus-outbreak"},
-    {"org": "WHO", "title": "Mpox hub & situation reports", "url": "https://www.who.int/emergencies/situations/mpox-outbreak"},
-    {"org": "ECDC", "title": "Monthly mpox surveillance bulletin", "url": "https://mpox-monthly.ecdc.europa.eu/"},
-    {"org": "WHO", "title": "DON 2026-DON595 — Mpox recombinant", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON595"}
+    {"org": "CDC", "title": "Ebola: current situation summary", "url": "https://www.cdc.gov/ebola/situation-summary/index.html"},
+    {"org": "CDC", "title": "HAN-530 — Ebola Disease Outbreak Advisory", "url": "https://www.cdc.gov/han/php/notices/han00530.html"},
+    {"org": "UN News", "title": "DR Congo Ebola — 4 nurses discharged after recovery", "url": "https://news.un.org/en/story/2026/06/1167613"},
+    {"org": "ECDC", "title": "Ebola outbreak — DRC & Uganda", "url": "https://www.ecdc.europa.eu/en/ebola-virus-disease-outbreak-democratic-republic-congo-and-uganda"},
+    {"org": "NICD", "title": "Ebola Bundibugyo situational reports", "url": "https://www.nicd.ac.za/ebola-bundibugyo-virus-outbreak-situation-report-drc-uganda/"},
+    {"org": "Medscape", "title": "Bundibugyo Ebola — new defences on the horizon?", "url": "https://www.medscape.com/viewarticle/bundibugyo-ebola-update-are-new-defenses-horizon-2026a1000i57"},
+    {"org": "ebola.fyi", "title": "Outbreak tracker — 2026 Bundibugyo strain", "url": "https://ebola.fyi/"},
+    {"org": "CDC", "title": "Measles cases and outbreaks 2026", "url": "https://www.cdc.gov/measles/data-research/index.html"},
+    {"org": "US News", "title": "Tracking the 2026 US measles outbreaks", "url": "https://www.usnews.com/news/health-news/articles/tracking-the-2026-u-s-measles-outbreaks"},
+    {"org": "CIDRAP", "title": "US measles total approaches 1,300", "url": "https://www.cidrap.umn.edu/measles/us-measles-total-approaches-1300-infections"},
+    {"org": "Healthline", "title": "US measles outbreak 2026 — surge in Utah and other states", "url": "https://www.healthline.com/health-news/us-measles-outbreak-2026"},
+    {"org": "CNN", "title": "South Carolina measles outbreak over", "url": "https://www.cnn.com/2026/04/27/health/south-carolina-measles-outbreak-over"},
+    {"org": "Dr Randal Olson", "title": "US measles elimination status at risk", "url": "https://www.randalolson.com/2026/05/13/us-measles-elimination-status-at-risk/"},
+    {"org": "JHU IVAC", "title": "US measles tracker", "url": "https://publichealth.jhu.edu/ivac/resources/us-measles-tracker"},
+    {"org": "CDC", "title": "A(H5) bird flu situation summary", "url": "https://www.cdc.gov/bird-flu/situation-summary/index.html"},
+    {"org": "CDC", "title": "H5N1 epi curve — human cases", "url": "https://www.cdc.gov/bird-flu/php/surveillance/chart-epi-curve-ah5n1.html"},
+    {"org": "CIDRAP", "title": "WHO reports H5N1 death among variant zoonotic flu cases", "url": "https://www.cidrap.umn.edu/avian-influenza-bird-flu/who-reports-h5n1-death-among-variant-zoonotic-flu-cases-seen-year"},
+    {"org": "CIDRAP", "title": "H5N1 cases can be asymptomatic; virus likely spreads among people", "url": "https://www.cidrap.umn.edu/avian-influenza-bird-flu/review-human-h5n1-avian-flu-cases-can-be-asymptomatic-and-virus-likely-spreads-among-people"},
+    {"org": "NEJM", "title": "Human infection with H5N5 virus (novel)", "url": "https://www.nejm.org/doi/full/10.1056/NEJMc2518178"},
+    {"org": "BBC Science Focus", "title": "Bird flu could spark human pandemic in 2026", "url": "https://www.sciencefocus.com/news/bird-flu-2026-analysis"},
+    {"org": "Wikipedia", "title": "2020–2026 H5N1 outbreak", "url": "https://en.wikipedia.org/wiki/2020%E2%80%932026_H5N1_outbreak"}
   ]
 }
